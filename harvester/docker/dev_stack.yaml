@@ -14,7 +14,7 @@ services:
     build:
       context: ../
       dockerfile: docker/scheduler.docker
-    image: "derbexuk/platform-feeds-generic"
+    image: "derbexuk/wurzel-harvester"
     depends_on:
       - "cspace-redis"
       - "cspace-feed-files-test"
