@@ -1,0 +1,24 @@
+format : CSV
+frequency : Once
+feed source : /paths/category/pois/croydon
+paths :
+  -
+    source : .
+    destination : /Collections/upload
+params :
+  headerrow : 0
+  generic :
+    order : ["poi", "event"]
+    poi :
+      Id : "ID"
+      Title : "ProjectName"
+      Geotype : "=point"
+      Lat : "Lat"
+      Long : "Long"
+    event :
+      timeFormat : "=2006-01-02"
+      Id : "=auto"
+      Refs : "=poi"
+      Title : "LBC Planning Reference"
+      Start : "Event Starts"
+      End : "Event Ends"

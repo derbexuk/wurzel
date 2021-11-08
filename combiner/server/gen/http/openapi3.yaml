@@ -1,0 +1,2628 @@
+openapi: 3.0.3
+info:
+  title: The Place of Interest, Event, and Organism API
+  description: Generic Poi, Event, and Organism API server
+  version: "1.0"
+servers:
+- url: http://0.0.0.0:8081
+paths:
+  /things/events/{path}:
+    post:
+      tags:
+      - events
+      summary: post events
+      description: Add an event
+      operationId: events#post
+      parameters:
+      - name: path
+        in: path
+        description: the path of the Event
+        required: true
+        schema:
+          type: string
+          description: the path of the Event
+          example: /croydon/purley/59b287534defd02dace3671b
+        example: /croydon/purley/59b287534defd02dace3671b
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostRequestBody2'
+            example:
+              events:
+              - deactivated: true
+                description: Quidem est quaerat.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Voluptas quis velit sed ducimus laboriosam.
+                properties:
+                  Maxime possimus porro temporibus consequuntur tempore.: Sit eos
+                    sit tempora nihil ipsum.
+                  Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+                refs:
+                - Molestiae optio hic sequi ea dolores tempora.
+                - Consequuntur perspiciatis ipsam accusamus natus.
+                - Debitis esse consequatur quo nesciunt.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Sed corporis qui.
+              - deactivated: true
+                description: Quidem est quaerat.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Voluptas quis velit sed ducimus laboriosam.
+                properties:
+                  Maxime possimus porro temporibus consequuntur tempore.: Sit eos
+                    sit tempora nihil ipsum.
+                  Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+                refs:
+                - Molestiae optio hic sequi ea dolores tempora.
+                - Consequuntur perspiciatis ipsam accusamus natus.
+                - Debitis esse consequatur quo nesciunt.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Sed corporis qui.
+      responses:
+        "200":
+          description: OK response.
+        "400":
+          description: Bad Request response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/events/deactivate/{path}:
+    put:
+      tags:
+      - events
+      summary: deactivate events
+      description: Delete an Event
+      operationId: events#deactivate
+      parameters:
+      - name: path
+        in: path
+        description: Path
+        required: true
+        schema:
+          type: string
+          description: Path
+          example: /croydon/purley/59b287534defd02dace3671b
+        example: /croydon/purley/59b287534defd02dace3671b
+      responses:
+        "200":
+          description: OK response.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/events/delete/{path}:
+    delete:
+      tags:
+      - events
+      summary: delete events
+      description: Delete an Event
+      operationId: events#delete
+      parameters:
+      - name: path
+        in: path
+        description: Path
+        required: true
+        schema:
+          type: string
+          description: Path
+          example: /croydon/purley/59b287534defd02dace3671b
+        example: /croydon/purley/59b287534defd02dace3671b
+      responses:
+        "200":
+          description: OK response.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/events/list/{path}:
+    get:
+      tags:
+      - events
+      summary: ListByPath events
+      description: List Events for a path
+      operationId: events#ListByPath
+      parameters:
+      - name: path
+        in: path
+        description: Path
+        required: true
+        schema:
+          type: string
+          description: Path
+          example: /croydon/purley/59b287534defd02dace3671b
+        example: /croydon/purley/59b287534defd02dace3671b
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/CspaceEventResponseSummaryCollection'
+                $ref: '#/components/schemas/CspaceEventCollection'
+              example:
+              - deactivated: false
+                description: Unde ad dolores sit sit quod enim.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Quasi consequuntur.
+                properties:
+                  Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus
+                    ut.
+                refs:
+                - Magni et facere sapiente voluptatem sunt quis.
+                - Repudiandae voluptatem est.
+                - Dolores consequatur ex repellendus.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Veniam cumque aut.
+              - deactivated: false
+                description: Unde ad dolores sit sit quod enim.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Quasi consequuntur.
+                properties:
+                  Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus
+                    ut.
+                refs:
+                - Magni et facere sapiente voluptatem sunt quis.
+                - Repudiandae voluptatem est.
+                - Dolores consequatur ex repellendus.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Veniam cumque aut.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/events/path/{path}:
+    get:
+      tags:
+      - events
+      summary: show events
+      description: Show an event in full
+      operationId: events#show
+      parameters:
+      - name: path
+        in: path
+        description: the path of the Event
+        required: true
+        schema:
+          type: string
+          description: the path of the Event
+          example: /croydon/purley/59b287534defd02dace3671b
+        example: /croydon/purley/59b287534defd02dace3671b
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/ShowResponseBodySummary2'
+                $ref: '#/components/schemas/CspaceEvent'
+              example:
+                deactivated: false
+                description: Fuga molestiae.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Iste debitis delectus ut.
+                properties:
+                  Ea ut similique magni ex.: Tempore cum vel illo.
+                  Rem quia et nobis voluptas.: Quam recusandae quos ipsum.
+                refs:
+                - Qui voluptates reprehenderit sint aperiam soluta.
+                - Dicta ipsum ut nesciunt consequatur tempore aut.
+                - Doloremque et perspiciatis nemo omnis.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Illo dolor.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/events/start/{start}/end/{end}/order/{order}/limit/{limit}/path/{path}:
+    get:
+      tags:
+      - events
+      summary: TimeSearch events
+      description: Show events according to search values
+      operationId: events#TimeSearch
+      parameters:
+      - name: start
+        in: path
+        description: Start
+        required: true
+        schema:
+          type: string
+          description: Start
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        example: "2017-08-22T12:06:30.696Z"
+      - name: end
+        in: path
+        description: End
+        required: true
+        schema:
+          type: string
+          description: End
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        example: "2017-08-22T12:06:30.696Z"
+      - name: order
+        in: path
+        description: Order
+        required: true
+        schema:
+          type: string
+          description: Order
+          example: A
+        example: A
+      - name: limit
+        in: path
+        description: Limit
+        required: true
+        schema:
+          type: integer
+          description: Limit
+          example: 2709522439841502049
+          format: int64
+        example: 6568183938070654165
+      - name: path
+        in: path
+        description: Path
+        required: true
+        schema:
+          type: string
+          description: Path
+          example: /croydon/purley/59b287534defd02dace3671b
+        example: /croydon/purley/59b287534defd02dace3671b
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/CspaceEventResponseSummaryCollection'
+                $ref: '#/components/schemas/CspaceEventCollection'
+              example:
+              - deactivated: false
+                description: Unde ad dolores sit sit quod enim.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Quasi consequuntur.
+                properties:
+                  Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus
+                    ut.
+                refs:
+                - Magni et facere sapiente voluptatem sunt quis.
+                - Repudiandae voluptatem est.
+                - Dolores consequatur ex repellendus.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Veniam cumque aut.
+              - deactivated: false
+                description: Unde ad dolores sit sit quod enim.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Quasi consequuntur.
+                properties:
+                  Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus
+                    ut.
+                refs:
+                - Magni et facere sapiente voluptatem sunt quis.
+                - Repudiandae voluptatem est.
+                - Dolores consequatur ex repellendus.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Veniam cumque aut.
+        "400":
+          description: Bad Request response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/events/start/{start}/end/{end}/path/{path}:
+    get:
+      tags:
+      - events
+      summary: ListByTimeAndPath events
+      description: List Events for a path
+      operationId: events#ListByTimeAndPath
+      parameters:
+      - name: start
+        in: path
+        description: Start
+        required: true
+        schema:
+          type: string
+          description: Start
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        example: "2017-08-22T12:06:30.696Z"
+      - name: end
+        in: path
+        description: End
+        required: true
+        schema:
+          type: string
+          description: End
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        example: "2017-08-22T12:06:30.696Z"
+      - name: path
+        in: path
+        description: Path
+        required: true
+        schema:
+          type: string
+          description: Path
+          example: /croydon/purley/59b287534defd02dace3671b
+        example: /croydon/purley/59b287534defd02dace3671b
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/CspaceEventResponseSummaryCollection'
+                $ref: '#/components/schemas/CspaceEventCollection'
+              example:
+              - deactivated: false
+                description: Unde ad dolores sit sit quod enim.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Quasi consequuntur.
+                properties:
+                  Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus
+                    ut.
+                refs:
+                - Magni et facere sapiente voluptatem sunt quis.
+                - Repudiandae voluptatem est.
+                - Dolores consequatur ex repellendus.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Veniam cumque aut.
+              - deactivated: false
+                description: Unde ad dolores sit sit quod enim.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Quasi consequuntur.
+                properties:
+                  Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus
+                    ut.
+                refs:
+                - Magni et facere sapiente voluptatem sunt quis.
+                - Repudiandae voluptatem est.
+                - Dolores consequatur ex repellendus.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Veniam cumque aut.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/events/update/{path}:
+    put:
+      tags:
+      - events
+      summary: update events
+      description: Update an event
+      operationId: events#update
+      parameters:
+      - name: path
+        in: path
+        description: Path
+        required: true
+        schema:
+          type: string
+          description: Path
+          example: /croydon/purley/59b287534defd02dace3671b
+        example: /croydon/purley/59b287534defd02dace3671b
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRequestBody2'
+            example:
+              event:
+                deactivated: true
+                description: Quidem est quaerat.
+                end: "2017-08-22T12:06:30.696Z"
+                id: 59b287534defd02dace3671b
+                path: Voluptas quis velit sed ducimus laboriosam.
+                properties:
+                  Maxime possimus porro temporibus consequuntur tempore.: Sit eos
+                    sit tempora nihil ipsum.
+                  Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+                refs:
+                - Molestiae optio hic sequi ea dolores tempora.
+                - Consequuntur perspiciatis ipsam accusamus natus.
+                - Debitis esse consequatur quo nesciunt.
+                start: "2017-08-22T12:06:30.696Z"
+                title: Sed corporis qui.
+      responses:
+        "200":
+          description: OK response.
+        "400":
+          description: Bad Request response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/organisms/{path}:
+    post:
+      tags:
+      - organisms
+      summary: post organisms
+      description: Add an organism
+      operationId: organisms#post
+      parameters:
+      - name: path
+        in: path
+        description: the path of the org
+        required: true
+        schema:
+          type: string
+          description: the path of the org
+          example: Sint ratione sint rerum repellat nemo laborum.
+        example: Ipsam molestiae consequatur.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostRequestBody3'
+            example:
+              organisms:
+              - deactivated: true
+                description: Numquam laboriosam quaerat accusantium.
+                id: 59b287534defd02dace3671b
+                path: Non dolor animi.
+                properties:
+                  Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+                refs:
+                - Ea sunt consectetur voluptatem est.
+                - Sed quasi libero excepturi molestiae vel.
+                title: At natus nobis facere corporis.
+              - deactivated: true
+                description: Numquam laboriosam quaerat accusantium.
+                id: 59b287534defd02dace3671b
+                path: Non dolor animi.
+                properties:
+                  Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+                refs:
+                - Ea sunt consectetur voluptatem est.
+                - Sed quasi libero excepturi molestiae vel.
+                title: At natus nobis facere corporis.
+              - deactivated: true
+                description: Numquam laboriosam quaerat accusantium.
+                id: 59b287534defd02dace3671b
+                path: Non dolor animi.
+                properties:
+                  Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+                refs:
+                - Ea sunt consectetur voluptatem est.
+                - Sed quasi libero excepturi molestiae vel.
+                title: At natus nobis facere corporis.
+              - deactivated: true
+                description: Numquam laboriosam quaerat accusantium.
+                id: 59b287534defd02dace3671b
+                path: Non dolor animi.
+                properties:
+                  Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+                refs:
+                - Ea sunt consectetur voluptatem est.
+                - Sed quasi libero excepturi molestiae vel.
+                title: At natus nobis facere corporis.
+      responses:
+        "200":
+          description: OK response.
+        "400":
+          description: Bad Request response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/organisms/deactivate/{path}:
+    put:
+      tags:
+      - organisms
+      summary: deactivate organisms
+      description: Delete an Organism
+      operationId: organisms#deactivate
+      parameters:
+      - name: path
+        in: path
+        description: Path
+        required: true
+        schema:
+          type: string
+          description: Path
+          example: /croydon/charity
+        example: /croydon/charity
+      responses:
+        "200":
+          description: OK response.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/organisms/delete/{path}:
+    delete:
+      tags:
+      - organisms
+      summary: delete organisms
+      description: Delete an Organism
+      operationId: organisms#delete
+      parameters:
+      - name: path
+        in: path
+        description: the path of the org
+        required: true
+        schema:
+          type: string
+          description: the path of the org
+          example: Quisquam aliquam aperiam iure.
+        example: Eaque id.
+      responses:
+        "200":
+          description: OK response.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/organisms/list/{path}:
+    get:
+      tags:
+      - organisms
+      summary: ListByPath organisms
+      description: List Orgs for a Path
+      operationId: organisms#ListByPath
+      parameters:
+      - name: path
+        in: path
+        description: the path of the Org
+        required: true
+        schema:
+          type: string
+          description: the path of the Org
+          example: Sunt voluptas et sit nostrum et.
+        example: Magnam aut voluptatem nisi.
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/CspaceOrganismResponseSummaryCollection'
+                $ref: '#/components/schemas/CspaceOrganismCollection'
+              example:
+              - deactivated: true
+                description: Natus ratione quia molestiae excepturi qui est.
+                id: 59b287534defd02dace3671b
+                path: Excepturi occaecati magni minus aut.
+                properties:
+                  Voluptate temporibus sapiente.: Sapiente dolores dicta.
+                  Voluptatum aut non quaerat.: Quis quo ad qui ut corporis.
+                refs:
+                - Assumenda autem et nostrum dolorem.
+                - Explicabo ut.
+                - Quia cupiditate molestiae hic labore illo voluptas.
+                title: Doloremque aut itaque iure.
+              - deactivated: true
+                description: Natus ratione quia molestiae excepturi qui est.
+                id: 59b287534defd02dace3671b
+                path: Excepturi occaecati magni minus aut.
+                properties:
+                  Voluptate temporibus sapiente.: Sapiente dolores dicta.
+                  Voluptatum aut non quaerat.: Quis quo ad qui ut corporis.
+                refs:
+                - Assumenda autem et nostrum dolorem.
+                - Explicabo ut.
+                - Quia cupiditate molestiae hic labore illo voluptas.
+                title: Doloremque aut itaque iure.
+              - deactivated: true
+                description: Natus ratione quia molestiae excepturi qui est.
+                id: 59b287534defd02dace3671b
+                path: Excepturi occaecati magni minus aut.
+                properties:
+                  Voluptate temporibus sapiente.: Sapiente dolores dicta.
+                  Voluptatum aut non quaerat.: Quis quo ad qui ut corporis.
+                refs:
+                - Assumenda autem et nostrum dolorem.
+                - Explicabo ut.
+                - Quia cupiditate molestiae hic labore illo voluptas.
+                title: Doloremque aut itaque iure.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/organisms/path/{path}:
+    get:
+      tags:
+      - organisms
+      summary: show organisms
+      description: Show an organism in full
+      operationId: organisms#show
+      parameters:
+      - name: path
+        in: path
+        description: the path of the org
+        required: true
+        schema:
+          type: string
+          description: the path of the org
+          example: Sed perferendis est sed cum consequatur.
+        example: Inventore quis mollitia repellat.
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/ShowResponseBodySummary3'
+                $ref: '#/components/schemas/CspaceOrganism'
+              example:
+                deactivated: false
+                description: Dolor et dicta.
+                id: 59b287534defd02dace3671b
+                path: Distinctio dolores omnis.
+                properties:
+                  Ducimus et praesentium molestiae.: Quisquam dolorem earum.
+                  Tempore soluta non illum et praesentium eius.: Qui doloribus.
+                  Ut ut.: Dicta a voluptatibus suscipit officia cupiditate aut.
+                refs:
+                - Harum explicabo impedit numquam in.
+                - Minus hic.
+                title: Recusandae nam officia incidunt ut.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/organisms/refs/{path}:
+    get:
+      tags:
+      - organisms
+      summary: ListByReference organisms
+      description: List Orgs for a Ref
+      operationId: organisms#ListByReference
+      parameters:
+      - name: path
+        in: path
+        description: the path of the Org
+        required: true
+        schema:
+          type: string
+          description: the path of the Org
+          example: Doloremque in ex laudantium culpa non.
+        example: Doloremque error rerum quibusdam sint praesentium.
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/CspaceOrganismResponseSummaryCollection'
+                $ref: '#/components/schemas/CspaceOrganismCollection'
+              example:
+              - deactivated: true
+                description: Natus ratione quia molestiae excepturi qui est.
+                id: 59b287534defd02dace3671b
+                path: Excepturi occaecati magni minus aut.
+                properties:
+                  Voluptate temporibus sapiente.: Sapiente dolores dicta.
+                  Voluptatum aut non quaerat.: Quis quo ad qui ut corporis.
+                refs:
+                - Assumenda autem et nostrum dolorem.
+                - Explicabo ut.
+                - Quia cupiditate molestiae hic labore illo voluptas.
+                title: Doloremque aut itaque iure.
+              - deactivated: true
+                description: Natus ratione quia molestiae excepturi qui est.
+                id: 59b287534defd02dace3671b
+                path: Excepturi occaecati magni minus aut.
+                properties:
+                  Voluptate temporibus sapiente.: Sapiente dolores dicta.
+                  Voluptatum aut non quaerat.: Quis quo ad qui ut corporis.
+                refs:
+                - Assumenda autem et nostrum dolorem.
+                - Explicabo ut.
+                - Quia cupiditate molestiae hic labore illo voluptas.
+                title: Doloremque aut itaque iure.
+              - deactivated: true
+                description: Natus ratione quia molestiae excepturi qui est.
+                id: 59b287534defd02dace3671b
+                path: Excepturi occaecati magni minus aut.
+                properties:
+                  Voluptate temporibus sapiente.: Sapiente dolores dicta.
+                  Voluptatum aut non quaerat.: Quis quo ad qui ut corporis.
+                refs:
+                - Assumenda autem et nostrum dolorem.
+                - Explicabo ut.
+                - Quia cupiditate molestiae hic labore illo voluptas.
+                title: Doloremque aut itaque iure.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/organisms/update/{path}:
+    put:
+      tags:
+      - organisms
+      summary: update organisms
+      description: Update an organism
+      operationId: organisms#update
+      parameters:
+      - name: path
+        in: path
+        description: the path of the org
+        required: true
+        schema:
+          type: string
+          description: the path of the org
+          example: Distinctio temporibus dolor vel quod laboriosam magni.
+        example: Deserunt quisquam dolores quia temporibus est qui.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRequestBody3'
+            example:
+              organism:
+                deactivated: true
+                description: Numquam laboriosam quaerat accusantium.
+                id: 59b287534defd02dace3671b
+                path: Non dolor animi.
+                properties:
+                  Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+                refs:
+                - Ea sunt consectetur voluptatem est.
+                - Sed quasi libero excepturi molestiae vel.
+                title: At natus nobis facere corporis.
+      responses:
+        "200":
+          description: OK response.
+        "400":
+          description: Bad Request response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/pois/{path}:
+    post:
+      tags:
+      - pois
+      summary: post pois
+      description: Add a POI
+      operationId: pois#post
+      parameters:
+      - name: path
+        in: path
+        description: the path of the POI
+        required: true
+        schema:
+          type: string
+          description: the path of the POI
+          example: Eaque sunt incidunt architecto repellendus occaecati.
+        example: Autem voluptatibus aut enim non tenetur saepe.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostRequestBody'
+            example:
+              pois:
+              - deactivated: false
+                description: Perferendis consequatur et.
+                geojson: Voluptates eum enim aut.
+                geopath:
+                  geopoints:
+                  - - 0.6467556
+                    - 0.28522083
+                    - 0.46987006
+                    - 0.22842954
+                  - - 0.935357
+                    - 0.68563277
+                  id: 59b287534defd02dace3671b
+                  title: Dolorum qui.
+                  type: Ea enim sunt animi et.
+                id: 59b287534defd02dace3671b
+                location: Placeat maxime sunt perferendis vel sunt.
+                path: Ut voluptas.
+                properties:
+                  Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+                  Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe
+                    molestias in.
+                  Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+                    et suscipit.
+                refs:
+                - Aliquid cupiditate.
+                - Nihil sint voluptate incidunt excepturi totam.
+                title: Vitae qui in dolorum officiis laborum dolor.
+              - deactivated: false
+                description: Perferendis consequatur et.
+                geojson: Voluptates eum enim aut.
+                geopath:
+                  geopoints:
+                  - - 0.6467556
+                    - 0.28522083
+                    - 0.46987006
+                    - 0.22842954
+                  - - 0.935357
+                    - 0.68563277
+                  id: 59b287534defd02dace3671b
+                  title: Dolorum qui.
+                  type: Ea enim sunt animi et.
+                id: 59b287534defd02dace3671b
+                location: Placeat maxime sunt perferendis vel sunt.
+                path: Ut voluptas.
+                properties:
+                  Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+                  Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe
+                    molestias in.
+                  Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+                    et suscipit.
+                refs:
+                - Aliquid cupiditate.
+                - Nihil sint voluptate incidunt excepturi totam.
+                title: Vitae qui in dolorum officiis laborum dolor.
+              - deactivated: false
+                description: Perferendis consequatur et.
+                geojson: Voluptates eum enim aut.
+                geopath:
+                  geopoints:
+                  - - 0.6467556
+                    - 0.28522083
+                    - 0.46987006
+                    - 0.22842954
+                  - - 0.935357
+                    - 0.68563277
+                  id: 59b287534defd02dace3671b
+                  title: Dolorum qui.
+                  type: Ea enim sunt animi et.
+                id: 59b287534defd02dace3671b
+                location: Placeat maxime sunt perferendis vel sunt.
+                path: Ut voluptas.
+                properties:
+                  Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+                  Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe
+                    molestias in.
+                  Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+                    et suscipit.
+                refs:
+                - Aliquid cupiditate.
+                - Nihil sint voluptate incidunt excepturi totam.
+                title: Vitae qui in dolorum officiis laborum dolor.
+              - deactivated: false
+                description: Perferendis consequatur et.
+                geojson: Voluptates eum enim aut.
+                geopath:
+                  geopoints:
+                  - - 0.6467556
+                    - 0.28522083
+                    - 0.46987006
+                    - 0.22842954
+                  - - 0.935357
+                    - 0.68563277
+                  id: 59b287534defd02dace3671b
+                  title: Dolorum qui.
+                  type: Ea enim sunt animi et.
+                id: 59b287534defd02dace3671b
+                location: Placeat maxime sunt perferendis vel sunt.
+                path: Ut voluptas.
+                properties:
+                  Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+                  Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe
+                    molestias in.
+                  Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+                    et suscipit.
+                refs:
+                - Aliquid cupiditate.
+                - Nihil sint voluptate incidunt excepturi totam.
+                title: Vitae qui in dolorum officiis laborum dolor.
+      responses:
+        "200":
+          description: OK response.
+        "400":
+          description: Bad Request response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+        "401":
+          description: Unauthorized response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/pois/deactivate/{path}:
+    put:
+      tags:
+      - pois
+      summary: deactivate pois
+      description: Update a POI
+      operationId: pois#deactivate
+      parameters:
+      - name: path
+        in: path
+        description: the path of the POI
+        required: true
+        schema:
+          type: string
+          description: the path of the POI
+          example: In eveniet eum.
+        example: Eveniet rerum quia id dolores excepturi.
+      responses:
+        "200":
+          description: OK response.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/pois/delete/{path}:
+    delete:
+      tags:
+      - pois
+      summary: delete pois
+      description: Delete a POI
+      operationId: pois#delete
+      parameters:
+      - name: path
+        in: path
+        description: the path of the POI
+        required: true
+        schema:
+          type: string
+          description: the path of the POI
+          example: Ea ut quo eius voluptas.
+        example: Est iure quis.
+      responses:
+        "200":
+          description: OK response.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/pois/path/{path}:
+    get:
+      tags:
+      - pois
+      summary: show pois
+      description: Show a POI
+      operationId: pois#show
+      parameters:
+      - name: path
+        in: path
+        description: the path of the POI
+        required: true
+        schema:
+          type: string
+          description: the path of the POI
+          example: Voluptatem exercitationem.
+        example: Modi eum aut nostrum suscipit quisquam.
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/ShowResponseBodySummary'
+                $ref: '#/components/schemas/CspacePoi'
+              example:
+                deactivated: true
+                description: Aliquid itaque sit cupiditate et accusantium et.
+                geojson: Veritatis iure.
+                id: 59b287534defd02dace3671b
+                location: Hic quia saepe quasi iure voluptatem.
+                path: Itaque architecto fuga.
+                properties:
+                  A dicta natus.: Tenetur aspernatur porro illum est magnam.
+                  Earum eveniet aut at possimus voluptatem dicta.: Aut ut quas nobis.
+                  Earum quibusdam sint.: Voluptatum illum sed et incidunt ducimus.
+                refs:
+                - Et provident et.
+                - Est minima delectus distinctio et magnam nulla.
+                - Earum in temporibus esse voluptas error.
+                title: At itaque eveniet vitae et numquam sint.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/pois/paths/{path}:
+    get:
+      tags:
+      - pois
+      summary: ListByPath pois
+      description: List POIs for a path
+      operationId: pois#ListByPath
+      parameters:
+      - name: path
+        in: path
+        description: the path of the POI
+        required: true
+        schema:
+          type: string
+          description: the path of the POI
+          example: Laudantium nobis saepe voluptas et.
+        example: Excepturi consequatur illum quas ut.
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/CspacePoiResponseSummaryCollection'
+                $ref: '#/components/schemas/CspacePoiCollection'
+              example:
+              - deactivated: true
+                description: Totam ut harum.
+                geojson: Modi sunt dolorem explicabo id quia aut.
+                id: 59b287534defd02dace3671b
+                location: Similique sed rem quas et quo.
+                path: Dolor dignissimos dolore.
+                properties:
+                  Et asperiores occaecati aut ut unde id.: Minima architecto officiis
+                    et possimus ratione.
+                  Porro quia eveniet similique autem.: Deleniti magnam veniam ad.
+                  Sunt quia placeat.: Eveniet est facere.
+                refs:
+                - Vel soluta.
+                - Qui qui omnis culpa quis atque sed.
+                - Sed quia dolorem et.
+                title: Magni aut et itaque iusto.
+              - deactivated: true
+                description: Totam ut harum.
+                geojson: Modi sunt dolorem explicabo id quia aut.
+                id: 59b287534defd02dace3671b
+                location: Similique sed rem quas et quo.
+                path: Dolor dignissimos dolore.
+                properties:
+                  Et asperiores occaecati aut ut unde id.: Minima architecto officiis
+                    et possimus ratione.
+                  Porro quia eveniet similique autem.: Deleniti magnam veniam ad.
+                  Sunt quia placeat.: Eveniet est facere.
+                refs:
+                - Vel soluta.
+                - Qui qui omnis culpa quis atque sed.
+                - Sed quia dolorem et.
+                title: Magni aut et itaque iusto.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/pois/refs/{path}:
+    get:
+      tags:
+      - pois
+      summary: ListByReference pois
+      description: List POIs for a path
+      operationId: pois#ListByReference
+      parameters:
+      - name: path
+        in: path
+        description: the path of the POI
+        required: true
+        schema:
+          type: string
+          description: the path of the POI
+          example: Repellendus laboriosam.
+        example: Tenetur omnis ducimus facilis.
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                description: 'Response body may alternatively be #/components/schemas/CspacePoiResponseSummaryCollection'
+                $ref: '#/components/schemas/CspacePoiCollection'
+              example:
+              - deactivated: true
+                description: Totam ut harum.
+                geojson: Modi sunt dolorem explicabo id quia aut.
+                id: 59b287534defd02dace3671b
+                location: Similique sed rem quas et quo.
+                path: Dolor dignissimos dolore.
+                properties:
+                  Et asperiores occaecati aut ut unde id.: Minima architecto officiis
+                    et possimus ratione.
+                  Porro quia eveniet similique autem.: Deleniti magnam veniam ad.
+                  Sunt quia placeat.: Eveniet est facere.
+                refs:
+                - Vel soluta.
+                - Qui qui omnis culpa quis atque sed.
+                - Sed quia dolorem et.
+                title: Magni aut et itaque iusto.
+              - deactivated: true
+                description: Totam ut harum.
+                geojson: Modi sunt dolorem explicabo id quia aut.
+                id: 59b287534defd02dace3671b
+                location: Similique sed rem quas et quo.
+                path: Dolor dignissimos dolore.
+                properties:
+                  Et asperiores occaecati aut ut unde id.: Minima architecto officiis
+                    et possimus ratione.
+                  Porro quia eveniet similique autem.: Deleniti magnam veniam ad.
+                  Sunt quia placeat.: Eveniet est facere.
+                refs:
+                - Vel soluta.
+                - Qui qui omnis culpa quis atque sed.
+                - Sed quia dolorem et.
+                title: Magni aut et itaque iusto.
+        "404":
+          description: Not Found response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/pois/update/{path}:
+    put:
+      tags:
+      - pois
+      summary: update pois
+      description: Update a POI
+      operationId: pois#update
+      parameters:
+      - name: path
+        in: path
+        description: the path of the POI
+        required: true
+        schema:
+          type: string
+          description: the path of the POI
+          example: Possimus vel et quasi.
+        example: Ut et sit mollitia ut tempora aut.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRequestBody'
+            example:
+              poi:
+                deactivated: false
+                description: Perferendis consequatur et.
+                geojson: Voluptates eum enim aut.
+                geopath:
+                  geopoints:
+                  - - 0.6467556
+                    - 0.28522083
+                    - 0.46987006
+                    - 0.22842954
+                  - - 0.935357
+                    - 0.68563277
+                  id: 59b287534defd02dace3671b
+                  title: Dolorum qui.
+                  type: Ea enim sunt animi et.
+                id: 59b287534defd02dace3671b
+                location: Placeat maxime sunt perferendis vel sunt.
+                path: Ut voluptas.
+                properties:
+                  Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+                  Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe
+                    molestias in.
+                  Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+                    et suscipit.
+                refs:
+                - Aliquid cupiditate.
+                - Nihil sint voluptate incidunt excepturi totam.
+                title: Vitae qui in dolorum officiis laborum dolor.
+      responses:
+        "200":
+          description: OK response.
+        "400":
+          description: Bad Request response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/upload/csv/{configFile}/{resource}:
+    post:
+      tags:
+      - upload
+      summary: csv upload
+      description: Upload CSV file
+      operationId: upload#csv
+      parameters:
+      - name: configFile
+        in: path
+        description: Config file name
+        required: true
+        schema:
+          type: string
+          description: Config file name
+          example: test.yaml
+        example: test.yaml
+      - name: resource
+        in: path
+        description: Service we are uploading
+        required: true
+        schema:
+          type: string
+          description: Service we are uploading
+          example: bizFeed.txt
+        example: bizFeed.txt
+      responses:
+        "200":
+          description: OK response.
+        "400":
+          description: Bad Request response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+  /things/upload/fetch/{configFile}:
+    post:
+      tags:
+      - upload
+      summary: fetch upload
+      description: Import the Google Doc For Generic Upload
+      operationId: upload#fetch
+      parameters:
+      - name: configFile
+        in: path
+        description: Config file name
+        required: true
+        schema:
+          type: string
+          description: Config file name
+          example: test.yaml
+        example: test.yaml
+      responses:
+        "200":
+          description: OK response.
+        "400":
+          description: Bad Request response.
+          content:
+            application/vnd.goa.error:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                id: 3F1FKVRR
+                message: Value of ID must be an integer
+                name: bad_request
+components:
+  schemas:
+    CspaceEvent:
+      type: object
+      properties:
+        deactivated:
+          type: boolean
+          example: false
+        description:
+          type: string
+          example: Molestiae cumque nulla vel similique impedit dolorem.
+        end:
+          type: string
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        id:
+          type: string
+          description: ID of Event
+          example: 59b287534defd02dace3671b
+        path:
+          type: string
+          example: Eum aut.
+        properties:
+          type: object
+          description: Hash of application specific properties
+          example:
+            Nisi quaerat et dignissimos eos temporibus numquam.: Consequatur fuga.
+            Suscipit odit.: Dolorem delectus vel.
+          additionalProperties: true
+        refs:
+          type: array
+          items:
+            type: string
+            example: Harum et fuga eligendi.
+          description: refs
+          example:
+          - Sunt voluptates.
+          - Officia rerum et vel dicta.
+          - Temporibus iste molestiae.
+          - Maxime iusto neque.
+        start:
+          type: string
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        title:
+          type: string
+          description: Event title/name
+          example: Accusantium provident sed.
+      example:
+        deactivated: true
+        description: Nam officia ut beatae nihil nesciunt quis.
+        end: "2017-08-22T12:06:30.696Z"
+        id: 59b287534defd02dace3671b
+        path: Est et ut eius.
+        properties:
+          Aut autem totam in excepturi.: Maxime exercitationem repellat exercitationem
+            nemo hic.
+        refs:
+        - Voluptatem facilis asperiores est esse.
+        - Est voluptas voluptatem tempore.
+        start: "2017-08-22T12:06:30.696Z"
+        title: Et facere.
+      required:
+      - id
+      - title
+      - start
+    CspaceEventCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/CspaceEvent'
+      example:
+      - deactivated: false
+        description: Unde ad dolores sit sit quod enim.
+        end: "2017-08-22T12:06:30.696Z"
+        id: 59b287534defd02dace3671b
+        path: Quasi consequuntur.
+        properties:
+          Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus ut.
+        refs:
+        - Magni et facere sapiente voluptatem sunt quis.
+        - Repudiandae voluptatem est.
+        - Dolores consequatur ex repellendus.
+        start: "2017-08-22T12:06:30.696Z"
+        title: Veniam cumque aut.
+      - deactivated: false
+        description: Unde ad dolores sit sit quod enim.
+        end: "2017-08-22T12:06:30.696Z"
+        id: 59b287534defd02dace3671b
+        path: Quasi consequuntur.
+        properties:
+          Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus ut.
+        refs:
+        - Magni et facere sapiente voluptatem sunt quis.
+        - Repudiandae voluptatem est.
+        - Dolores consequatur ex repellendus.
+        start: "2017-08-22T12:06:30.696Z"
+        title: Veniam cumque aut.
+      - deactivated: false
+        description: Unde ad dolores sit sit quod enim.
+        end: "2017-08-22T12:06:30.696Z"
+        id: 59b287534defd02dace3671b
+        path: Quasi consequuntur.
+        properties:
+          Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus ut.
+        refs:
+        - Magni et facere sapiente voluptatem sunt quis.
+        - Repudiandae voluptatem est.
+        - Dolores consequatur ex repellendus.
+        start: "2017-08-22T12:06:30.696Z"
+        title: Veniam cumque aut.
+      - deactivated: false
+        description: Unde ad dolores sit sit quod enim.
+        end: "2017-08-22T12:06:30.696Z"
+        id: 59b287534defd02dace3671b
+        path: Quasi consequuntur.
+        properties:
+          Asperiores culpa quia.: Aperiam ea minima autem consequatur ducimus ut.
+        refs:
+        - Magni et facere sapiente voluptatem sunt quis.
+        - Repudiandae voluptatem est.
+        - Dolores consequatur ex repellendus.
+        start: "2017-08-22T12:06:30.696Z"
+        title: Veniam cumque aut.
+    CspaceEventResponseSummaryCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/ShowResponseBodySummary2'
+      description: TimeSearchResponseBody is the result type for an array of CspaceEventResponse
+        (summary view)
+      example:
+      - end: "2017-08-22T12:06:30.696Z"
+        id: 59b287534defd02dace3671b
+        path: Voluptatem fugiat nemo facere cumque.
+        start: "2017-08-22T12:06:30.696Z"
+        title: Nam aspernatur enim molestiae laboriosam.
+      - end: "2017-08-22T12:06:30.696Z"
+        id: 59b287534defd02dace3671b
+        path: Voluptatem fugiat nemo facere cumque.
+        start: "2017-08-22T12:06:30.696Z"
+        title: Nam aspernatur enim molestiae laboriosam.
+    CspaceOrganism:
+      type: object
+      properties:
+        deactivated:
+          type: boolean
+          example: false
+        description:
+          type: string
+          example: Quae ad esse non pariatur omnis saepe.
+        id:
+          type: string
+          description: ID of Organism
+          example: 59b287534defd02dace3671b
+        path:
+          type: string
+          example: Veritatis corporis praesentium blanditiis quasi.
+        properties:
+          type: object
+          description: Hash of application specific properties
+          example:
+            Optio qui fugit.: Voluptatibus aut voluptatem architecto officia enim.
+          additionalProperties: true
+        refs:
+          type: array
+          items:
+            type: string
+            example: Ut repudiandae ut tempore eos.
+          description: refs
+          example:
+          - Tenetur perferendis rerum quia.
+          - Modi nobis et at qui explicabo.
+          - Ad ab repudiandae animi magnam et et.
+        title:
+          type: string
+          description: Organism title
+          example: Aut deleniti laborum perferendis.
+      example:
+        deactivated: false
+        description: Molestias sapiente laudantium.
+        id: 59b287534defd02dace3671b
+        path: Iusto est.
+        properties:
+          Commodi voluptate.: Vitae quaerat nam ducimus et.
+          Fuga quos qui numquam.: Veritatis doloremque facere.
+          Vitae officia rerum voluptas quisquam.: Architecto fugit earum corporis
+            earum.
+        refs:
+        - Similique eum repudiandae non ipsum et dicta.
+        - Molestias voluptates velit nihil ut suscipit.
+        - Dolorem qui enim et.
+        title: Ut vitae quae.
+      required:
+      - id
+      - title
+    CspaceOrganismCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/CspaceOrganism'
+      example:
+      - deactivated: true
+        description: Natus ratione quia molestiae excepturi qui est.
+        id: 59b287534defd02dace3671b
+        path: Excepturi occaecati magni minus aut.
+        properties:
+          Voluptate temporibus sapiente.: Sapiente dolores dicta.
+          Voluptatum aut non quaerat.: Quis quo ad qui ut corporis.
+        refs:
+        - Assumenda autem et nostrum dolorem.
+        - Explicabo ut.
+        - Quia cupiditate molestiae hic labore illo voluptas.
+        title: Doloremque aut itaque iure.
+      - deactivated: true
+        description: Natus ratione quia molestiae excepturi qui est.
+        id: 59b287534defd02dace3671b
+        path: Excepturi occaecati magni minus aut.
+        properties:
+          Voluptate temporibus sapiente.: Sapiente dolores dicta.
+          Voluptatum aut non quaerat.: Quis quo ad qui ut corporis.
+        refs:
+        - Assumenda autem et nostrum dolorem.
+        - Explicabo ut.
+        - Quia cupiditate molestiae hic labore illo voluptas.
+        title: Doloremque aut itaque iure.
+      - deactivated: true
+        description: Natus ratione quia molestiae excepturi qui est.
+        id: 59b287534defd02dace3671b
+        path: Excepturi occaecati magni minus aut.
+        properties:
+          Voluptate temporibus sapiente.: Sapiente dolores dicta.
+          Voluptatum aut non quaerat.: Quis quo ad qui ut corporis.
+        refs:
+        - Assumenda autem et nostrum dolorem.
+        - Explicabo ut.
+        - Quia cupiditate molestiae hic labore illo voluptas.
+        title: Doloremque aut itaque iure.
+    CspaceOrganismResponseSummaryCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/ShowResponseBodySummary3'
+      description: ListByPathResponseBody is the result type for an array of CspaceOrganismResponse
+        (summary view)
+      example:
+      - id: 59b287534defd02dace3671b
+        path: Porro atque neque adipisci.
+        title: Dolores hic optio id.
+      - id: 59b287534defd02dace3671b
+        path: Porro atque neque adipisci.
+        title: Dolores hic optio id.
+    CspacePoi:
+      type: object
+      properties:
+        deactivated:
+          type: boolean
+          example: false
+        description:
+          type: string
+          example: Non distinctio laborum.
+        geojson:
+          type: string
+          example: Nihil sapiente odio.
+        id:
+          type: string
+          description: ID of poi
+          example: 59b287534defd02dace3671b
+        location:
+          type: string
+          description: name of location
+          example: Qui ut quo quia neque commodi et.
+        path:
+          type: string
+          example: Quidem tempore illo asperiores dolor.
+        properties:
+          type: object
+          description: Hash of application specific properties
+          example:
+            Aperiam iure dolores.: Et eos ut quia et.
+            Omnis similique explicabo et doloribus voluptatem velit.: Inventore labore.
+            Similique quo rerum.: Et excepturi commodi.
+          additionalProperties: true
+        refs:
+          type: array
+          items:
+            type: string
+            example: Omnis architecto laborum est nesciunt quis.
+          description: refs
+          example:
+          - Maxime adipisci provident.
+          - Quasi nam doloremque sit rerum.
+          - Sint iste.
+        title:
+          type: string
+          description: Poi title/name
+          example: Similique sed et doloribus excepturi.
+      example:
+        deactivated: false
+        description: Minima odit illo.
+        geojson: Aut sit.
+        id: 59b287534defd02dace3671b
+        location: Sunt sit enim.
+        path: Id sunt dolor consequatur adipisci sint porro.
+        properties:
+          Similique in.: Totam minus.
+        refs:
+        - In quas culpa numquam.
+        - Modi dolorem accusantium ipsa ullam libero neque.
+        title: Magnam corrupti sapiente sit molestiae delectus.
+      required:
+      - id
+      - title
+      - geojson
+    CspacePoiCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/CspacePoi'
+      example:
+      - deactivated: true
+        description: Totam ut harum.
+        geojson: Modi sunt dolorem explicabo id quia aut.
+        id: 59b287534defd02dace3671b
+        location: Similique sed rem quas et quo.
+        path: Dolor dignissimos dolore.
+        properties:
+          Et asperiores occaecati aut ut unde id.: Minima architecto officiis et possimus
+            ratione.
+          Porro quia eveniet similique autem.: Deleniti magnam veniam ad.
+          Sunt quia placeat.: Eveniet est facere.
+        refs:
+        - Vel soluta.
+        - Qui qui omnis culpa quis atque sed.
+        - Sed quia dolorem et.
+        title: Magni aut et itaque iusto.
+      - deactivated: true
+        description: Totam ut harum.
+        geojson: Modi sunt dolorem explicabo id quia aut.
+        id: 59b287534defd02dace3671b
+        location: Similique sed rem quas et quo.
+        path: Dolor dignissimos dolore.
+        properties:
+          Et asperiores occaecati aut ut unde id.: Minima architecto officiis et possimus
+            ratione.
+          Porro quia eveniet similique autem.: Deleniti magnam veniam ad.
+          Sunt quia placeat.: Eveniet est facere.
+        refs:
+        - Vel soluta.
+        - Qui qui omnis culpa quis atque sed.
+        - Sed quia dolorem et.
+        title: Magni aut et itaque iusto.
+      - deactivated: true
+        description: Totam ut harum.
+        geojson: Modi sunt dolorem explicabo id quia aut.
+        id: 59b287534defd02dace3671b
+        location: Similique sed rem quas et quo.
+        path: Dolor dignissimos dolore.
+        properties:
+          Et asperiores occaecati aut ut unde id.: Minima architecto officiis et possimus
+            ratione.
+          Porro quia eveniet similique autem.: Deleniti magnam veniam ad.
+          Sunt quia placeat.: Eveniet est facere.
+        refs:
+        - Vel soluta.
+        - Qui qui omnis culpa quis atque sed.
+        - Sed quia dolorem et.
+        title: Magni aut et itaque iusto.
+    CspacePoiResponseSummaryCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/ShowResponseBodySummary'
+      description: ListByPathResponseBody is the result type for an array of CspacePoiResponse
+        (summary view)
+      example:
+      - geojson: Recusandae officiis voluptates.
+        id: 59b287534defd02dace3671b
+        path: Rerum blanditiis illo.
+        title: Eaque quas adipisci voluptatibus nostrum.
+      - geojson: Recusandae officiis voluptates.
+        id: 59b287534defd02dace3671b
+        path: Rerum blanditiis illo.
+        title: Eaque quas adipisci voluptatibus nostrum.
+      - geojson: Recusandae officiis voluptates.
+        id: 59b287534defd02dace3671b
+        path: Rerum blanditiis illo.
+        title: Eaque quas adipisci voluptatibus nostrum.
+    Error:
+      type: object
+      properties:
+        fault:
+          type: boolean
+          description: Is the error a server-side fault?
+          example: true
+        id:
+          type: string
+          description: ID is a unique identifier for this particular occurrence of
+            the problem.
+          example: 123abc
+        message:
+          type: string
+          description: Message is a human-readable explanation specific to this occurrence
+            of the problem.
+          example: parameter 'p' must be an integer
+        name:
+          type: string
+          description: Name is the name of this class of errors.
+          example: bad_request
+        temporary:
+          type: boolean
+          description: Is the error temporary?
+          example: true
+        timeout:
+          type: boolean
+          description: Is the error a timeout?
+          example: false
+      example:
+        id: 3F1FKVRR
+        message: Value of ID must be an integer
+        name: bad_request
+      required:
+      - name
+      - id
+      - message
+      - temporary
+      - timeout
+      - fault
+    EventPayload:
+      type: object
+      properties:
+        deactivated:
+          type: boolean
+          example: true
+        description:
+          type: string
+          example: Dignissimos neque maxime odio consectetur ipsa illum.
+        end:
+          type: string
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        id:
+          type: string
+          description: ID of Event
+          example: 59b287534defd02dace3671b
+        path:
+          type: string
+          example: Voluptas repellendus earum.
+        properties:
+          type: object
+          description: Hash of application specific properties
+          example:
+            Dolorum voluptas nulla quae odio omnis.: Est eum vel doloribus consequatur.
+            Iste nemo aut consequatur iste ad.: Sint non vel.
+            Reiciendis cupiditate dolore in.: Iste est aspernatur repellendus aut.
+          additionalProperties: true
+        refs:
+          type: array
+          items:
+            type: string
+            example: Iure sed modi.
+          description: references
+          example:
+          - Aut quo eum natus ipsam.
+          - Quibusdam ipsa temporibus sint.
+          - Vel accusamus ea molestiae nulla id.
+        start:
+          type: string
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        title:
+          type: string
+          description: Event title/name
+          example: Exercitationem omnis maxime error maxime nulla.
+      example:
+        deactivated: true
+        description: Commodi error.
+        end: "2017-08-22T12:06:30.696Z"
+        id: 59b287534defd02dace3671b
+        path: Eos aliquam corrupti.
+        properties:
+          Inventore cupiditate est.: Natus autem voluptatem.
+          Necessitatibus voluptas.: Ut non quis laborum.
+        refs:
+        - Placeat et est dolorem beatae placeat.
+        - Architecto dolorem cumque quia.
+        - Voluptatem corrupti eum ullam.
+        start: "2017-08-22T12:06:30.696Z"
+        title: Sunt ut aut omnis.
+      required:
+      - id
+      - title
+      - start
+    GeoPath:
+      type: object
+      properties:
+        geopoints:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              example: 0.6783636
+              format: float
+            example:
+            - 0.8149871
+            - 0.15989213
+            - 0.4832486
+            - 0.23336947
+          description: path
+          example:
+          - - 0.97462606
+            - 0.90194196
+            - 0.09899091
+          - - 0.39223528
+            - 0.16143991
+        id:
+          type: string
+          example: 59b287534defd02dace3671b
+        title:
+          type: string
+          description: Path title/name
+          example: Ex tenetur qui.
+        type:
+          type: string
+          description: must be route | point | area
+          example: Error incidunt esse.
+      example:
+        geopoints:
+        - - 0.34325835
+          - 0.45775557
+          - 0.74104047
+        - - 0.07965892
+          - 0.7898295
+          - 0.97203803
+        id: 59b287534defd02dace3671b
+        title: Qui eius aut sint.
+        type: Aliquam tempore.
+    OrganismPayload:
+      type: object
+      properties:
+        deactivated:
+          type: boolean
+          example: false
+        description:
+          type: string
+          example: Ipsam facilis.
+        id:
+          type: string
+          description: ID of Organism
+          example: 59b287534defd02dace3671b
+        path:
+          type: string
+          example: Sequi quia.
+        properties:
+          type: object
+          description: Hash of application specific properties
+          example:
+            Quam doloremque expedita.: Dolorem rerum libero labore a rerum.
+            Vel illo consequuntur nesciunt ipsam libero natus.: Eos sint porro sapiente
+              ut minima autem.
+            Voluptatem quo hic harum nam fugiat.: Voluptates aut omnis reprehenderit
+              quis consequuntur.
+          additionalProperties: true
+        refs:
+          type: array
+          items:
+            type: string
+            example: In ea animi quis ut.
+          description: references
+          example:
+          - In vel deserunt nobis et impedit.
+          - Voluptatem facere repellendus unde ut culpa.
+          - Et animi magni qui.
+        title:
+          type: string
+          description: Organism title
+          example: In eveniet exercitationem.
+      example:
+        deactivated: true
+        description: Architecto incidunt autem nulla ipsam modi in.
+        id: 59b287534defd02dace3671b
+        path: Est quod possimus impedit laudantium asperiores reprehenderit.
+        properties:
+          Esse nam eos.: Iure voluptatem itaque iusto.
+        refs:
+        - In dignissimos et ratione perspiciatis.
+        - Tenetur quo porro enim tenetur est.
+        - Autem animi provident quas neque at.
+        - Modi qui aliquam ut sunt blanditiis et.
+        title: Est velit non aut.
+      required:
+      - id
+      - title
+    PoiPayload:
+      type: object
+      properties:
+        deactivated:
+          type: boolean
+          example: true
+        description:
+          type: string
+          example: Rem est natus et et atque aut.
+        geojson:
+          type: string
+          example: In qui laboriosam esse qui neque.
+        geopath:
+          $ref: '#/components/schemas/GeoPath'
+        id:
+          type: string
+          description: ID of poi
+          example: 59b287534defd02dace3671b
+        location:
+          type: string
+          description: name of location
+          example: Dolor nihil deleniti amet praesentium quos.
+        path:
+          type: string
+          example: Ratione neque ratione.
+        properties:
+          type: object
+          description: Hash of application specific properties
+          example:
+            Consequatur iusto molestiae vel blanditiis et aut.: Rerum sequi et qui
+              sed.
+          additionalProperties: true
+        refs:
+          type: array
+          items:
+            type: string
+            example: Quia expedita adipisci unde cum.
+          description: references
+          example:
+          - Tempora excepturi facilis nam cupiditate.
+          - Quaerat quia odit ab.
+        title:
+          type: string
+          description: Poi title/name
+          example: Enim iure reiciendis et unde eos.
+      example:
+        deactivated: true
+        description: Voluptatem ipsa eum repudiandae dolor est.
+        geojson: A nobis tempora pariatur sed et impedit.
+        geopath:
+          geopoints:
+          - - 0.6467556
+            - 0.28522083
+            - 0.46987006
+            - 0.22842954
+          - - 0.935357
+            - 0.68563277
+          id: 59b287534defd02dace3671b
+          title: Dolorum qui.
+          type: Ea enim sunt animi et.
+        id: 59b287534defd02dace3671b
+        location: Iste pariatur delectus maxime qui similique.
+        path: Debitis occaecati aperiam qui eligendi qui.
+        properties:
+          Fuga et dolore.: Consectetur temporibus ab iste.
+        refs:
+        - Quis incidunt animi cum nesciunt.
+        - Labore culpa et qui perspiciatis iure.
+        title: Pariatur ipsam et harum ullam et.
+      required:
+      - id
+      - title
+      - geojson
+    PostRequestBody:
+      type: object
+      properties:
+        pois:
+          type: array
+          items:
+            $ref: '#/components/schemas/PoiPayload'
+          example:
+          - deactivated: false
+            description: Perferendis consequatur et.
+            geojson: Voluptates eum enim aut.
+            geopath:
+              geopoints:
+              - - 0.6467556
+                - 0.28522083
+                - 0.46987006
+                - 0.22842954
+              - - 0.935357
+                - 0.68563277
+              id: 59b287534defd02dace3671b
+              title: Dolorum qui.
+              type: Ea enim sunt animi et.
+            id: 59b287534defd02dace3671b
+            location: Placeat maxime sunt perferendis vel sunt.
+            path: Ut voluptas.
+            properties:
+              Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+              Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe molestias
+                in.
+              Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+                et suscipit.
+            refs:
+            - Aliquid cupiditate.
+            - Nihil sint voluptate incidunt excepturi totam.
+            title: Vitae qui in dolorum officiis laborum dolor.
+          - deactivated: false
+            description: Perferendis consequatur et.
+            geojson: Voluptates eum enim aut.
+            geopath:
+              geopoints:
+              - - 0.6467556
+                - 0.28522083
+                - 0.46987006
+                - 0.22842954
+              - - 0.935357
+                - 0.68563277
+              id: 59b287534defd02dace3671b
+              title: Dolorum qui.
+              type: Ea enim sunt animi et.
+            id: 59b287534defd02dace3671b
+            location: Placeat maxime sunt perferendis vel sunt.
+            path: Ut voluptas.
+            properties:
+              Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+              Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe molestias
+                in.
+              Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+                et suscipit.
+            refs:
+            - Aliquid cupiditate.
+            - Nihil sint voluptate incidunt excepturi totam.
+            title: Vitae qui in dolorum officiis laborum dolor.
+          - deactivated: false
+            description: Perferendis consequatur et.
+            geojson: Voluptates eum enim aut.
+            geopath:
+              geopoints:
+              - - 0.6467556
+                - 0.28522083
+                - 0.46987006
+                - 0.22842954
+              - - 0.935357
+                - 0.68563277
+              id: 59b287534defd02dace3671b
+              title: Dolorum qui.
+              type: Ea enim sunt animi et.
+            id: 59b287534defd02dace3671b
+            location: Placeat maxime sunt perferendis vel sunt.
+            path: Ut voluptas.
+            properties:
+              Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+              Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe molestias
+                in.
+              Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+                et suscipit.
+            refs:
+            - Aliquid cupiditate.
+            - Nihil sint voluptate incidunt excepturi totam.
+            title: Vitae qui in dolorum officiis laborum dolor.
+          - deactivated: false
+            description: Perferendis consequatur et.
+            geojson: Voluptates eum enim aut.
+            geopath:
+              geopoints:
+              - - 0.6467556
+                - 0.28522083
+                - 0.46987006
+                - 0.22842954
+              - - 0.935357
+                - 0.68563277
+              id: 59b287534defd02dace3671b
+              title: Dolorum qui.
+              type: Ea enim sunt animi et.
+            id: 59b287534defd02dace3671b
+            location: Placeat maxime sunt perferendis vel sunt.
+            path: Ut voluptas.
+            properties:
+              Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+              Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe molestias
+                in.
+              Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+                et suscipit.
+            refs:
+            - Aliquid cupiditate.
+            - Nihil sint voluptate incidunt excepturi totam.
+            title: Vitae qui in dolorum officiis laborum dolor.
+      example:
+        pois:
+        - deactivated: false
+          description: Perferendis consequatur et.
+          geojson: Voluptates eum enim aut.
+          geopath:
+            geopoints:
+            - - 0.6467556
+              - 0.28522083
+              - 0.46987006
+              - 0.22842954
+            - - 0.935357
+              - 0.68563277
+            id: 59b287534defd02dace3671b
+            title: Dolorum qui.
+            type: Ea enim sunt animi et.
+          id: 59b287534defd02dace3671b
+          location: Placeat maxime sunt perferendis vel sunt.
+          path: Ut voluptas.
+          properties:
+            Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+            Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe molestias
+              in.
+            Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+              et suscipit.
+          refs:
+          - Aliquid cupiditate.
+          - Nihil sint voluptate incidunt excepturi totam.
+          title: Vitae qui in dolorum officiis laborum dolor.
+        - deactivated: false
+          description: Perferendis consequatur et.
+          geojson: Voluptates eum enim aut.
+          geopath:
+            geopoints:
+            - - 0.6467556
+              - 0.28522083
+              - 0.46987006
+              - 0.22842954
+            - - 0.935357
+              - 0.68563277
+            id: 59b287534defd02dace3671b
+            title: Dolorum qui.
+            type: Ea enim sunt animi et.
+          id: 59b287534defd02dace3671b
+          location: Placeat maxime sunt perferendis vel sunt.
+          path: Ut voluptas.
+          properties:
+            Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+            Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe molestias
+              in.
+            Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+              et suscipit.
+          refs:
+          - Aliquid cupiditate.
+          - Nihil sint voluptate incidunt excepturi totam.
+          title: Vitae qui in dolorum officiis laborum dolor.
+    PostRequestBody2:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventPayload'
+          example:
+          - deactivated: true
+            description: Quidem est quaerat.
+            end: "2017-08-22T12:06:30.696Z"
+            id: 59b287534defd02dace3671b
+            path: Voluptas quis velit sed ducimus laboriosam.
+            properties:
+              Maxime possimus porro temporibus consequuntur tempore.: Sit eos sit
+                tempora nihil ipsum.
+              Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+            refs:
+            - Molestiae optio hic sequi ea dolores tempora.
+            - Consequuntur perspiciatis ipsam accusamus natus.
+            - Debitis esse consequatur quo nesciunt.
+            start: "2017-08-22T12:06:30.696Z"
+            title: Sed corporis qui.
+          - deactivated: true
+            description: Quidem est quaerat.
+            end: "2017-08-22T12:06:30.696Z"
+            id: 59b287534defd02dace3671b
+            path: Voluptas quis velit sed ducimus laboriosam.
+            properties:
+              Maxime possimus porro temporibus consequuntur tempore.: Sit eos sit
+                tempora nihil ipsum.
+              Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+            refs:
+            - Molestiae optio hic sequi ea dolores tempora.
+            - Consequuntur perspiciatis ipsam accusamus natus.
+            - Debitis esse consequatur quo nesciunt.
+            start: "2017-08-22T12:06:30.696Z"
+            title: Sed corporis qui.
+          - deactivated: true
+            description: Quidem est quaerat.
+            end: "2017-08-22T12:06:30.696Z"
+            id: 59b287534defd02dace3671b
+            path: Voluptas quis velit sed ducimus laboriosam.
+            properties:
+              Maxime possimus porro temporibus consequuntur tempore.: Sit eos sit
+                tempora nihil ipsum.
+              Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+            refs:
+            - Molestiae optio hic sequi ea dolores tempora.
+            - Consequuntur perspiciatis ipsam accusamus natus.
+            - Debitis esse consequatur quo nesciunt.
+            start: "2017-08-22T12:06:30.696Z"
+            title: Sed corporis qui.
+          - deactivated: true
+            description: Quidem est quaerat.
+            end: "2017-08-22T12:06:30.696Z"
+            id: 59b287534defd02dace3671b
+            path: Voluptas quis velit sed ducimus laboriosam.
+            properties:
+              Maxime possimus porro temporibus consequuntur tempore.: Sit eos sit
+                tempora nihil ipsum.
+              Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+            refs:
+            - Molestiae optio hic sequi ea dolores tempora.
+            - Consequuntur perspiciatis ipsam accusamus natus.
+            - Debitis esse consequatur quo nesciunt.
+            start: "2017-08-22T12:06:30.696Z"
+            title: Sed corporis qui.
+      example:
+        events:
+        - deactivated: true
+          description: Quidem est quaerat.
+          end: "2017-08-22T12:06:30.696Z"
+          id: 59b287534defd02dace3671b
+          path: Voluptas quis velit sed ducimus laboriosam.
+          properties:
+            Maxime possimus porro temporibus consequuntur tempore.: Sit eos sit tempora
+              nihil ipsum.
+            Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+          refs:
+          - Molestiae optio hic sequi ea dolores tempora.
+          - Consequuntur perspiciatis ipsam accusamus natus.
+          - Debitis esse consequatur quo nesciunt.
+          start: "2017-08-22T12:06:30.696Z"
+          title: Sed corporis qui.
+        - deactivated: true
+          description: Quidem est quaerat.
+          end: "2017-08-22T12:06:30.696Z"
+          id: 59b287534defd02dace3671b
+          path: Voluptas quis velit sed ducimus laboriosam.
+          properties:
+            Maxime possimus porro temporibus consequuntur tempore.: Sit eos sit tempora
+              nihil ipsum.
+            Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+          refs:
+          - Molestiae optio hic sequi ea dolores tempora.
+          - Consequuntur perspiciatis ipsam accusamus natus.
+          - Debitis esse consequatur quo nesciunt.
+          start: "2017-08-22T12:06:30.696Z"
+          title: Sed corporis qui.
+        - deactivated: true
+          description: Quidem est quaerat.
+          end: "2017-08-22T12:06:30.696Z"
+          id: 59b287534defd02dace3671b
+          path: Voluptas quis velit sed ducimus laboriosam.
+          properties:
+            Maxime possimus porro temporibus consequuntur tempore.: Sit eos sit tempora
+              nihil ipsum.
+            Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+          refs:
+          - Molestiae optio hic sequi ea dolores tempora.
+          - Consequuntur perspiciatis ipsam accusamus natus.
+          - Debitis esse consequatur quo nesciunt.
+          start: "2017-08-22T12:06:30.696Z"
+          title: Sed corporis qui.
+        - deactivated: true
+          description: Quidem est quaerat.
+          end: "2017-08-22T12:06:30.696Z"
+          id: 59b287534defd02dace3671b
+          path: Voluptas quis velit sed ducimus laboriosam.
+          properties:
+            Maxime possimus porro temporibus consequuntur tempore.: Sit eos sit tempora
+              nihil ipsum.
+            Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+          refs:
+          - Molestiae optio hic sequi ea dolores tempora.
+          - Consequuntur perspiciatis ipsam accusamus natus.
+          - Debitis esse consequatur quo nesciunt.
+          start: "2017-08-22T12:06:30.696Z"
+          title: Sed corporis qui.
+    PostRequestBody3:
+      type: object
+      properties:
+        organisms:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganismPayload'
+          example:
+          - deactivated: true
+            description: Numquam laboriosam quaerat accusantium.
+            id: 59b287534defd02dace3671b
+            path: Non dolor animi.
+            properties:
+              Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+            refs:
+            - Ea sunt consectetur voluptatem est.
+            - Sed quasi libero excepturi molestiae vel.
+            title: At natus nobis facere corporis.
+          - deactivated: true
+            description: Numquam laboriosam quaerat accusantium.
+            id: 59b287534defd02dace3671b
+            path: Non dolor animi.
+            properties:
+              Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+            refs:
+            - Ea sunt consectetur voluptatem est.
+            - Sed quasi libero excepturi molestiae vel.
+            title: At natus nobis facere corporis.
+          - deactivated: true
+            description: Numquam laboriosam quaerat accusantium.
+            id: 59b287534defd02dace3671b
+            path: Non dolor animi.
+            properties:
+              Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+            refs:
+            - Ea sunt consectetur voluptatem est.
+            - Sed quasi libero excepturi molestiae vel.
+            title: At natus nobis facere corporis.
+          - deactivated: true
+            description: Numquam laboriosam quaerat accusantium.
+            id: 59b287534defd02dace3671b
+            path: Non dolor animi.
+            properties:
+              Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+            refs:
+            - Ea sunt consectetur voluptatem est.
+            - Sed quasi libero excepturi molestiae vel.
+            title: At natus nobis facere corporis.
+      example:
+        organisms:
+        - deactivated: true
+          description: Numquam laboriosam quaerat accusantium.
+          id: 59b287534defd02dace3671b
+          path: Non dolor animi.
+          properties:
+            Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+          refs:
+          - Ea sunt consectetur voluptatem est.
+          - Sed quasi libero excepturi molestiae vel.
+          title: At natus nobis facere corporis.
+        - deactivated: true
+          description: Numquam laboriosam quaerat accusantium.
+          id: 59b287534defd02dace3671b
+          path: Non dolor animi.
+          properties:
+            Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+          refs:
+          - Ea sunt consectetur voluptatem est.
+          - Sed quasi libero excepturi molestiae vel.
+          title: At natus nobis facere corporis.
+        - deactivated: true
+          description: Numquam laboriosam quaerat accusantium.
+          id: 59b287534defd02dace3671b
+          path: Non dolor animi.
+          properties:
+            Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+          refs:
+          - Ea sunt consectetur voluptatem est.
+          - Sed quasi libero excepturi molestiae vel.
+          title: At natus nobis facere corporis.
+        - deactivated: true
+          description: Numquam laboriosam quaerat accusantium.
+          id: 59b287534defd02dace3671b
+          path: Non dolor animi.
+          properties:
+            Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+          refs:
+          - Ea sunt consectetur voluptatem est.
+          - Sed quasi libero excepturi molestiae vel.
+          title: At natus nobis facere corporis.
+    ShowResponseBodySummary:
+      type: object
+      properties:
+        geojson:
+          type: string
+          example: In quia.
+        id:
+          type: string
+          description: ID of poi
+          example: 59b287534defd02dace3671b
+        path:
+          type: string
+          example: In quis.
+        title:
+          type: string
+          description: Poi title/name
+          example: Error aut nam suscipit iusto corrupti earum.
+      description: ShowResponseBody result type (summary view)
+      example:
+        geojson: Et rerum.
+        id: 59b287534defd02dace3671b
+        path: Veniam dolorum quod vel modi dolores.
+        title: Et quidem perspiciatis et non id.
+      required:
+      - id
+      - title
+      - geojson
+    ShowResponseBodySummary2:
+      type: object
+      properties:
+        end:
+          type: string
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        id:
+          type: string
+          description: ID of Event
+          example: 59b287534defd02dace3671b
+        path:
+          type: string
+          example: Et quibusdam aut.
+        start:
+          type: string
+          example: "2017-08-22T12:06:30.696Z"
+          format: date-time
+        title:
+          type: string
+          description: Event title/name
+          example: Aliquam dolores at quam non.
+      description: ShowResponseBody result type (summary view)
+      example:
+        end: "2017-08-22T12:06:30.696Z"
+        id: 59b287534defd02dace3671b
+        path: Vitae exercitationem ut.
+        start: "2017-08-22T12:06:30.696Z"
+        title: Voluptate architecto ut laborum.
+      required:
+      - id
+      - title
+      - start
+    ShowResponseBodySummary3:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of Organism
+          example: 59b287534defd02dace3671b
+        path:
+          type: string
+          example: Quia quis eaque ipsam.
+        title:
+          type: string
+          description: Organism title
+          example: Aliquam quas quidem enim vero.
+      description: ShowResponseBody result type (summary view)
+      example:
+        id: 59b287534defd02dace3671b
+        path: Autem vel iure et accusantium.
+        title: Dicta ad quas recusandae consequatur.
+      required:
+      - id
+      - title
+    UpdateRequestBody:
+      type: object
+      properties:
+        poi:
+          $ref: '#/components/schemas/PoiPayload'
+      example:
+        poi:
+          deactivated: false
+          description: Perferendis consequatur et.
+          geojson: Voluptates eum enim aut.
+          geopath:
+            geopoints:
+            - - 0.6467556
+              - 0.28522083
+              - 0.46987006
+              - 0.22842954
+            - - 0.935357
+              - 0.68563277
+            id: 59b287534defd02dace3671b
+            title: Dolorum qui.
+            type: Ea enim sunt animi et.
+          id: 59b287534defd02dace3671b
+          location: Placeat maxime sunt perferendis vel sunt.
+          path: Ut voluptas.
+          properties:
+            Dolores voluptas sunt et quia voluptatem.: Dolores sed.
+            Officiis voluptatem corporis voluptatem accusamus dolores.: Saepe molestias
+              in.
+            Ut aut dolore qui iste asperiores hic.: Mollitia nihil cum et voluptate
+              et suscipit.
+          refs:
+          - Aliquid cupiditate.
+          - Nihil sint voluptate incidunt excepturi totam.
+          title: Vitae qui in dolorum officiis laborum dolor.
+    UpdateRequestBody2:
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/EventPayload'
+      example:
+        event:
+          deactivated: true
+          description: Quidem est quaerat.
+          end: "2017-08-22T12:06:30.696Z"
+          id: 59b287534defd02dace3671b
+          path: Voluptas quis velit sed ducimus laboriosam.
+          properties:
+            Maxime possimus porro temporibus consequuntur tempore.: Sit eos sit tempora
+              nihil ipsum.
+            Voluptatem et vero blanditiis non iste.: Et pariatur fuga.
+          refs:
+          - Molestiae optio hic sequi ea dolores tempora.
+          - Consequuntur perspiciatis ipsam accusamus natus.
+          - Debitis esse consequatur quo nesciunt.
+          start: "2017-08-22T12:06:30.696Z"
+          title: Sed corporis qui.
+    UpdateRequestBody3:
+      type: object
+      properties:
+        organism:
+          $ref: '#/components/schemas/OrganismPayload'
+      example:
+        organism:
+          deactivated: true
+          description: Numquam laboriosam quaerat accusantium.
+          id: 59b287534defd02dace3671b
+          path: Non dolor animi.
+          properties:
+            Ut sed incidunt.: Pariatur deserunt non quisquam dolor.
+          refs:
+          - Ea sunt consectetur voluptatem est.
+          - Sed quasi libero excepturi molestiae vel.
+          title: At natus nobis facere corporis.
+tags:
+- name: upload
+- name: pois
+- name: events
+- name: organisms

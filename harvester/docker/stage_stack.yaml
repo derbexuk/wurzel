@@ -1,0 +1,30 @@
+version: '3'
+services:
+  cspace-mongo:
+    image: "mongo:3.4"
+    ports:
+      - "27017:27017"
+    volumes:
+      - '/data/mongodb:/data/db'
+  cspace-redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+  cspace-feed-files-test:
+    build:
+      context: ../../../../
+      dockerfile: src/cspace/platformfeeds/docker/feed_files.docker
+    volumes:
+      - feeds-vol:/etc/cspace/feeds.d
+  cspace-feeds:
+    build:
+      context: ../../../../
+      dockerfile: src/cspace/platformfeeds/docker/scheduler.docker
+    image: "connectedspace/platform-feeds-generic:1.1.1"
+    depends_on:
+      - "cspace-redis"
+      - "cspace-feed-files-test"
+    volumes:
+      - feeds-vol:/etc/cspace/feeds.d
+volumes:
+  feeds-vol:

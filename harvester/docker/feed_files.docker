@@ -1,0 +1,4 @@
+FROM alpine
+
+COPY docker/london_air_quality.yaml /etc/cspace/feeds.d/
+

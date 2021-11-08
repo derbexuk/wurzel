@@ -1,0 +1,4 @@
+FROM alpine
+
+RUN mkdir -p etc/skunk/consumer.d
+COPY consumer/test.yaml /etc/skunk/consumer.d/test.yaml

@@ -1,0 +1,3 @@
+sources:
+  /finance/prices/exchangerates/coinbase:
+    eventDestPath: /events/finance/prices/exchangerates/coinbase

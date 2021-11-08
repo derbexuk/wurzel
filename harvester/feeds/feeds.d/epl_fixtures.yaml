@@ -1,0 +1,9 @@
+format : XML
+frequency : 60m
+feed source : http://football.api.press.net/v1.5/competition/fixtures/|ApiKey|/100
+credentials :
+  ApiKey : PqX9xW7wXDB2
+paths :
+  -
+    source : fixtures
+    destination : /sports/epl/fixtures

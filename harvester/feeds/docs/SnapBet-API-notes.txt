@@ -1,0 +1,98 @@
+API
+/games - get all games
+Respond data format: [ {first_game_attributes}, {second_game_attributes}, ... ]
+
+Filtering parameters:
+
+upcoming=true - for upcoming games
+in_progress=true - for in progress games 
+count=10 - get only first 10 games
+
+Edit
+/games/id - get all details for specific game
+{"venue":"Emirates Stadium","id":555,"team2_name":"Chelsea","team1_score":1,"is_post_tweets":0,"team2_score":1,","state":2,"name":"Arsenal vs Chelsea","match_live_id":798867183,"team1_id":1006,"is_post_facebook":0,"is_money_game":0,"url":null,"team2_id":4,"team1_name":"Arsenal"}
+
+Edit
+/games/<game_id>/bets - get bets and money amount for specific game
+{"time_interval":1,"value":0.25,"game_period":1,"won":0,"id":7955,"bet_time_in_game":2151,"user_id":88,"event_type_id":2,"amount":0.25,"game_id":402}
+
+Edit
+/users - get list of all users with all fields
+/users?count=10 - get first 10 users
+/users?select=id,email,amount - select only specific fields
+
+If you will try to request non-existing fields, you will receive response "Bad Request" with message: error: "You can't select not existing fields: name"
+
+/users/:id - get all fields for specific user
+
+If try to use not existing user id, "Bad Request" response will received, with message: error: "Can't find user with id ':id'"
+
+/users/:id/real_balance - get user's real balance (also you can find this data in the list of users, in field withdraw_amount)
+/api/users/:id/virtual_balance - get user's virtual balance (also you can find this data in the list of users, in field amount)
+
+Edit
+/games/:id/top10 - get TOP10 winners for a game:
+Server respond contains array of top users (maximum 10), with fields: profile_picture, amount_won, username
+
+Example:
+
+Request: http://snapbet.gera-it-dev.com/api/games/84/top10
+
+Respond: [{"profile_picture":"http://demo.switchplayed.com/system/avatars/11/original/September-2010.png?1284998906","amount_won":213.5,"username":"Duncan Gough"},{"profile_picture":"http://demo.switchplayed.com/system/avatars/3/original/Arsenal logo.png?1287846422","amount_won":186.0,"username":"Peter Gough"},{"profile_picture":"http://demo.switchplayed.com/system/avatars/6/original/jump1.jpg?1286382745","amount_won":49.5,"username":"Alex Lopez"}]
+
+Edit
+/users/:id/get_payment_system - get current main payment system for user
+/users/:id/set_payment_system - set current main payment system for user
+We have added to the system 2 types of payments systems: real and virtual. Each user has both and you can switch between them.
+
+GET /api/users/:id/get_payment_system - get current main payment system for user.
+Response: {payment_system: "real"} or {payment_system: "virtual"}
+
+PUT /api/users/:id/set_payment_system - set current main payment system for user, add parameter to request: {payment_system: "real"} or {payment_system: "virtual"}. 
+Response: success: 'Payment system become 'payment system name'.
+
+System has 2 types of fields to handle user's balance:
+
+withdraw_amount - main account (with real coins).This account is credited when user send us a real money. This account can't store bonuses given by system.
+
+amount - secondary account (with virtual coins). System adds 3 bonus points to this account when user starts the game, so he can try the game without adding real money.
+
+Most time only you will be interesting in withdraw_amount account, but for your comfort we have added ability to get both amounts.
+
+GET /users/:id/withdraw_amount - get amount of money using current payment_system.
+Also you can specify parameter {payment_system: "virtual"} (or "real") to specify payment system. 
+Response: {withdraw_amount: value}
+
+GET /users/:id/amount - get amount of money using (with bonuses) current payment_system.
+Also you can specify parameter {payment_system: "virtual"} (or "real") to specify payment system. 
+Response: {amount: value}
+
+PUT /users/:id/credit - credit user's account using selected payment system. Parameter for money value: {money: value}. 
+Also, you can specify {payment_system: "virtual"} (or "real") parameter to specify payment system. 
+Response: {success: "User had 'n' and now has 'n+money'}
+
+PUT /users/:id/debit - debit user's account using selected payment system. Parameter for money value: {money: value}. 
+Also, you can specify {payment_system: "virtual"} (or "real") parameter to specify payment system. 
+Response: {success: "User had 'n' and now has 'n-money'}
+
+If case of any issues in request, you will get response with Bad Request status and message {error: "Error details."}.
+
+Edit
+Login via FB and Twitter
+Twitter and Facebook auth methods were updated, so now you can sign in using FB/Twitter. Links for signing in are situated in the right upper corner of home page.
+
+Also, this methods can be used via API:
+
+Edit
+http://snapbet.gera-it-dev.com/api/users/sign_in_with_tw?access_token=&access_token_secret= - sign in user via Twitter.
+To use sign_in_with_tw functionality for proper user, you first need get 'access_token' and 'access_token_secret' from twitter for proper user.
+If request correct you will receive { single_access_token: <token digits> } in response and you can use it to sign in into SwitchPlayed system. If request parameters are incorrect, you will see proper error message in format: {error: message}
+
+Edit
+http://snapbet.gera-it-dev.com/api/users/sign_in_with_fb - sign in user via Facebook.
+To use sign_in_with_fb functionality for proper user, you first need get 'access_token' from facebook for proper user.
+If request correct you will receive { single_access_token: <token digits> } in response and you can use it to sign in into SwitchPlayed system. If request parameters are incorrect, you will see proper error message in format: {error: message}
+
+Edit
+http://snapbet.gera-it-dev.com/api/users/sign_out - sign out current user (current user identification is based on browser cookies).Edit
+http://snapbet.gera-it-dev.com/api/users/current - return current user data (current user identification is based on browser cookies).

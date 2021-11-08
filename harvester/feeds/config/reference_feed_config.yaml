@@ -1,0 +1,16 @@
+format: XML
+frequency: 60m
+feed source : http://api.erg.kcl.ac.uk/|ApiKey|/AirQuality/Hourly/MonitoringIndex/
+credentials :
+  ApiKey : KEY123
+sub feeds :
+  SiteCode :
+    - CR5
+paths :
+  -
+    source : ./HourlyAirQualityIndex/LocalAuthority/Site/species/attrs/AirQualityBand
+    destination : /environment/london/|SiteCode|/air-quality/band
+    mungers : toupper
+  -
+    source : ./HourlyAirQualityIndex/LocalAuthority/Site/species/attrs/AirQualityIndex
+    destination : /environment/london/|SiteCode|/air-quality/index

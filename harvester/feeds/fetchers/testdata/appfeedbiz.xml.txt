@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<nodes>
+  <node>
+    <Nid>984</Nid>
+    <Title>Barclays Bank (Norfolk House)</Title>
+    <Category>Financial Services</Category>
+    <Intro>Barclays is a major global financial services provider engaged in retail banking, credit cards, corporate and investment banking and wealth and investment management. It operates in over 50 countries and employs around 140,000 people worldwide.</Intro>
+    <Logo>http://checkoutcroydon.com/sites/default/files/barclays_0.png</Logo>
+    <Location_Name>Barclays Bank PLC</Location_Name>
+    <Street>19-20 Wellesley Road</Street>
+    <Postal_Code>CR9 1NG</Postal_Code>
+    <Latitude>51.374407</Latitude>
+    <Longitude>-0.096452</Longitude>
+  </node>
+  <node>
+    <Nid>985</Nid>
+    <Title>Barclays Bank (North End)</Title>
+    <Category>Financial Services</Category>
+    <Intro>Barclays is a major global financial services provider engaged in retail banking, credit cards, corporate and investment banking and wealth and investment management. It operates in over 50 countries and employs around 140,000 people worldwide.</Intro>
+    <Logo>http://checkoutcroydon.com/sites/default/files/barclays_1.png</Logo>
+    <Location_Name>Barclays Bank PLC</Location_Name>
+    <Street>1 North End</Street>
+    <Postal_Code>CR9 1SX</Postal_Code>
+    <Latitude>51.374381</Latitude>
+    <Longitude>-0.096438</Longitude>
+  </node>
+  <node>
+    <Nid>2940</Nid>
+    <Title>South West London Law Centres</Title>
+    <Category>Legal Services</Category>
+    <Intro>South West London Law Centres is an independent registered charity providing specialised legal advice and assistance covering Wandsworth, Merton, Croydon, Kingston-upon-Thames, Richmond-upon-Thames and Sutton in South West London.</Intro>
+    <Logo>http://checkoutcroydon.com/sites/default/files/swl_0_0.jpg</Logo>
+    <Location_Name>Davis House</Location_Name>
+    <Street>Robert Street</Street>
+    <Additional>5th Floor Davis House</Additional>
+    <City>Croydon</City>
+    <Postal_Code>CR0 1QQ</Postal_Code>
+    <Latitude>51.371282</Latitude>
+    <Longitude>-0.099516</Longitude>
+  </node>
+  <node>
+    <Nid>2941</Nid>
+    <Title>The Whitgift Foundation </Title>
+    <Category>Charity</Category>
+    <Intro>The Whitgift Foundation is the oldest educational charity based in Croydon. Founded in 1596 its aims were to provide education for the young and care for the elderly.</Intro>
+    <Logo>http://checkoutcroydon.com/sites/default/files/whitgift-foundation-logo2.jpg</Logo>
+    <Location_Name>The Whitgift Foundation</Location_Name>
+    <Street>North End</Street>
+    <Postal_Code>CR9 1SS</Postal_Code>
+    <Latitude>51.376430</Latitude>
+    <Longitude>-0.100456</Longitude>
+  </node>
+  <node>
+    <Nid>2943</Nid>
+    <Title>Five Guys</Title>
+    <Category>Eating &amp; Drinking</Category>
+    <Intro>Five Guys is an American fast food chain founded in 1986 and specialising in hamburgers, hot dogs and French fries. It now has more than 1,000 restaurants worldwide - including 58 in Britain.</Intro>
+    <Logo>http://checkoutcroydon.com/sites/default/files/download3.jpg</Logo>
+    <Location_Name>Five Guys</Location_Name>
+    <Street>7/11 High Street</Street>
+    <Postal_Code>CR0 1QA</Postal_Code>
+    <Latitude>51.373320</Latitude>
+    <Longitude>-0.100082</Longitude>
+  </node>
+</nodes>

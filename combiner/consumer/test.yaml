@@ -1,0 +1,10 @@
+sources:
+    /airQuality/test:
+      dropData: true
+      poiDestPath: /pois/environment/croydon/monitoring
+      poiRefPath: /organisms/local-authorities
+      eventDestPath: /events/environment/croydon/monitoring/air-quality
+      eventRefPath: /pois/environment/croydon/monitoring
+      organismDestPath: /organisms/local-authorities
+    /airQuality/test2:
+      poiDestPath: /pois/business/=Properties.Category

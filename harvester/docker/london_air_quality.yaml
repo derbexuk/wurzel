@@ -1,0 +1,27 @@
+format: JSON
+frequency: 3600s
+feed source : http://api.erg.kcl.ac.uk/AirQuality/Hourly/MonitoringIndex/SiteCode=CR9/json
+paths :
+  -
+    destination : /test/environment/london/kcl
+params :
+  generic :
+    order : ["poi", "event"]
+    poi :
+      Id : "=geo"
+      Title : "HourlyAirQualityIndex.LocalAuthority.Site.@SiteName"
+      Geotype : "=point"
+      Lat : "HourlyAirQualityIndex.LocalAuthority.Site.@Latitude"
+      Long : "HourlyAirQualityIndex.LocalAuthority.Site.@Longitude"
+    event :
+      iterator : "HourlyAirQualityIndex.LocalAuthority.Site.species"
+      timeFormat : "=2006-01-02 15:04:05"
+      Id : "=auto"
+      Refs : "=poi"
+      Title : "iterator.@SpeciesName"
+      Start : "HourlyAirQualityIndex.LocalAuthority.Site.@BulletinDate"
+      End : "=start"
+      Properties :
+        AirQualityBand : "iterator.@AirQualityBand"
+        AirQualityIndex : "iterator.@AirQualityIndex"
+

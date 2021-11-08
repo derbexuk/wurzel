@@ -1,0 +1,7 @@
+FROM alpine:latest
+
+COPY bin/consumer /usr/bin/poiconsumer
+ 
+ENV COLL_CONFIG_FILE /etc/skunk/consumer.d/test.yaml
+
+ENTRYPOINT ["/usr/bin/poiconsumer"]

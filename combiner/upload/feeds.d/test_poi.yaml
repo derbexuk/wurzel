@@ -1,0 +1,32 @@
+format : GSHEET
+frequency : Once
+
+#Note quoting of the sheet name and the range selection
+feed source : https://sheets.googleapis.com/v4/spreadsheets/1xLKbKu_LCnLKJF-Od0iXrFXvwMJGesMArFlDF2U0abM/values/!A1:H100
+credentials :
+    service file : jhtest-b1e83fac8378.json
+params :
+    #This tells us where to take the column names from (we map these to keys)
+    headerrow : 0
+    #Tells us where to start reading data from, default is next row after headerrow
+    datastartrow : 1
+    #Standardise column names
+    headermap:
+      title: Title
+      latitude: Lat
+      longitude: Long
+      artistdescription: Desc
+    
+    generic:
+      poi:
+        Id: "=auto"
+        Geotype: "=point"
+        Title: Title
+        Lat: Lat
+        Long: Long
+
+
+paths :
+  -
+    source : .
+    destination : /croydon/festival

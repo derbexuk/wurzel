@@ -1,0 +1,17 @@
+format : GSHEET
+frequency : 60m
+
+#Note quoting of the sheet name and the range selection -we don't want column A in this sheet
+feed source : https://sheets.googleapis.com/v4/spreadsheets/14PxntYcdDgJwL6_jFgKl_4dsw6Tu3sLDDrqwhSbMWsg/values/'Public sector'!B1:Z1000
+credentials :
+    service file : jhtest-b1e83fac8378.json
+params :
+    #This tells us where to take the column names from (we map these to keys)
+    headerrow : 1
+    #Tells us where to start reading data from, default is next row after headerrow
+    datastartrow : 2
+paths :
+  -
+    source : .
+    destination : /SiteMatch/people
+

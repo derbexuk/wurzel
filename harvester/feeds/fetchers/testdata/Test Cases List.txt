@@ -1,0 +1,16 @@
+Test				Input		Output			Description
+TestParseGsheet			gsheetdata	Hardcoded in test	Basic google sheet test
+TestParseGsheetHdr		gsheetdata	Hardcoded in test
+TestParseGsheetHdrOffset	gsheetdata	Hardcoded in test
+TestParseGsheetHdrMap		gsheetdata	Hardcoded in test
+TestParseCsv			csvdata		Hardcoded in test	Basic csv file test
+TestParseCsvHdr			csvdata		Hardcoded in test
+TestParseCsvHdrOffset		csvdata		Hardcoded in test
+TestParseCsvHdrMap		csvdata		Hardcoded in test
+TestParseCsv01			csv01input	csv01output		Full data set test
+TestParseCsv02			csv02input	csv02output		Reduced number of rows
+TestParseCsv03			csv03input	csv03output		Reduced number of columns
+TestParseCsv04			csv04input	csv04output		Checks data contains "TEST"
+TestParseCsv05			csv05input	csv05output		Checks empty columns are propagated
+TestParseCsv06			csv06input	csv06output		Checks embedded empty columns are propagated
+TestParseCsv07			csv07input	csv07output		Checks assorted empty columns are propagated

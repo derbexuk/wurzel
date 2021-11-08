@@ -1,0 +1,35 @@
+version: '3'
+services:
+  cspace-redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    volumes:
+      - '/data/redis:/data'
+  consumer-files:
+    build:
+      context: ../
+      dockerfile: docker/consumer_files.docker
+    image: "derbexuk/platform-collections-consumer-files"
+    volumes:
+      - config-vol:/etc/skunk/consumer.d
+# collections:
+#   build:
+#     context: ../
+#     dockerfile: docker/server.docker
+#   image: "derbexuk/platform-collections"
+#   environment:
+#     MONGOHOST: "0.0.0.0:27017"
+  collections-consumer:
+    build:
+      context: ../
+      dockerfile: docker/consumer.docker
+    image: "derbexuk/platform-collections-consumer"
+    environment:
+      MONGOHOST: "0.0.0.0:27017"
+    depends_on:
+      - "consumer-files"
+    volumes:
+      - config-vol:/etc/skunk/consumer.d
+volumes:
+  config-vol:

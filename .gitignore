@@ -1,0 +1,19 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+#will catch cover files
+*.out 
+#vi edit backups
+*.swp 
+#sqlite databases
+*.db
+#ide
+.project
+#executeables
+bin
+#auto generated
+server/app/
+server/client/
+server/swagger/
+server/tool/
+
+#python caches
+__pycache__
