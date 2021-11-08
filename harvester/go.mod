@@ -7,7 +7,6 @@ require (
 	github.com/beevik/etree v1.1.0
 	github.com/bitly/go-simplejson v0.5.0 // indirect
 	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869 // indirect
-	github.com/derbexuk/wurzel/combiner v0.0.0-00010101000000-000000000000 // indirect
 	github.com/onsi/gomega v1.16.0
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125
 	go.mongodb.org/mongo-driver v1.7.2
@@ -17,6 +16,6 @@ require (
 	gopkg.in/yaml.v2 v2.4.0
 )
 
-replace github.com/derbexuk/wurzel/harvester => ../harvester
+//replace github.com/derbexuk/wurzel/harvester => ../harvester
 
-replace github.com/derbexuk/wurzel/combiner => ../combiner
+//replace github.com/derbexuk/wurzel/combiner => ../combiner

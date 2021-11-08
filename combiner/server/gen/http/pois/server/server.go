@@ -3,7 +3,7 @@
 // pois HTTP server
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package server
 
@@ -11,7 +11,7 @@ import (
 	"context"
 	"net/http"
 
-	pois "github.com/derbexuk/poieventservice/server/gen/pois"
+	pois "github.com/derbexuk/wurzel/combiner/server/gen/pois"
 	goahttp "goa.design/goa/v3/http"
 	goa "goa.design/goa/v3/pkg"
 	"goa.design/plugins/v3/cors"

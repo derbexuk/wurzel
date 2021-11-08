@@ -3,13 +3,13 @@
 // events HTTP client types
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package client
 
 import (
-	events "github.com/derbexuk/poieventservice/server/gen/events"
-	eventsviews "github.com/derbexuk/poieventservice/server/gen/events/views"
+	events "github.com/derbexuk/wurzel/combiner/server/gen/events"
+	eventsviews "github.com/derbexuk/wurzel/combiner/server/gen/events/views"
 	goa "goa.design/goa/v3/pkg"
 )
 

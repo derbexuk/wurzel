@@ -3,12 +3,12 @@
 // upload HTTP server types
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package server
 
 import (
-	upload "github.com/derbexuk/poieventservice/server/gen/upload"
+	upload "github.com/derbexuk/wurzel/combiner/server/gen/upload"
 	goa "goa.design/goa/v3/pkg"
 )
 

@@ -3,7 +3,6 @@ module github.com/derbexuk/wurzel/combiner
 go 1.17
 
 require (
-	github.com/derbexuk/wurzel/harvester v0.0.0
 	github.com/onsi/gomega v1.16.0
 	go.mongodb.org/mongo-driver v1.7.2
 	goa.design/goa/v3 v3.5.2
@@ -46,6 +45,6 @@ require (
 	gopkg.in/redis.v5 v5.2.9 // indirect
 )
 
-replace github.com/derbexuk/wurzel/harvester => ../harvester
+//replace github.com/derbexuk/wurzel/harvester => ../harvester
 
-replace github.com/derbexuk/wurzel/combiner => ../combiner
+//replace github.com/derbexuk/wurzel/combiner => ../combiner

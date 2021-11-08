@@ -3,7 +3,7 @@
 // events HTTP server encoders and decoders
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package server
 
@@ -13,8 +13,8 @@ import (
 	"net/http"
 	"strconv"
 
-	events "github.com/derbexuk/poieventservice/server/gen/events"
-	eventsviews "github.com/derbexuk/poieventservice/server/gen/events/views"
+	events "github.com/derbexuk/wurzel/combiner/server/gen/events"
+	eventsviews "github.com/derbexuk/wurzel/combiner/server/gen/events/views"
 	goahttp "goa.design/goa/v3/http"
 	goa "goa.design/goa/v3/pkg"
 )

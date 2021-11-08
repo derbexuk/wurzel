@@ -3,7 +3,7 @@
 // pois HTTP client CLI support package
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package client
 
@@ -11,7 +11,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	pois "github.com/derbexuk/poieventservice/server/gen/pois"
+	pois "github.com/derbexuk/wurzel/combiner/server/gen/pois"
 )
 
 // BuildPostPayload builds the payload for the pois post endpoint from CLI

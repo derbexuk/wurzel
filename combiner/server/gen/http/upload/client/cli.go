@@ -3,12 +3,12 @@
 // upload HTTP client CLI support package
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package client
 
 import (
-	upload "github.com/derbexuk/poieventservice/server/gen/upload"
+	upload "github.com/derbexuk/wurzel/combiner/server/gen/upload"
 )
 
 // BuildFetchPayload builds the payload for the upload fetch endpoint from CLI

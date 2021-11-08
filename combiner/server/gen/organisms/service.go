@@ -3,14 +3,14 @@
 // organisms service
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package organisms
 
 import (
 	"context"
 
-	organismsviews "github.com/derbexuk/poieventservice/server/gen/organisms/views"
+	organismsviews "github.com/derbexuk/wurzel/combiner/server/gen/organisms/views"
 	goa "goa.design/goa/v3/pkg"
 )
 

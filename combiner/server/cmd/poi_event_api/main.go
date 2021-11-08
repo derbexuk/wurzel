@@ -12,11 +12,11 @@ import (
 	"sync"
 	"syscall"
 
-	poieventapi "github.com/derbexuk/poieventservice/server"
-	events "github.com/derbexuk/poieventservice/server/gen/events"
-	organisms "github.com/derbexuk/poieventservice/server/gen/organisms"
-	pois "github.com/derbexuk/poieventservice/server/gen/pois"
-	upload "github.com/derbexuk/poieventservice/server/gen/upload"
+	poieventapi "github.com/derbexuk/wurzel/combiner/server"
+	events "github.com/derbexuk/wurzel/combiner/server/gen/events"
+	organisms "github.com/derbexuk/wurzel/combiner/server/gen/organisms"
+	pois "github.com/derbexuk/wurzel/combiner/server/gen/pois"
+	upload "github.com/derbexuk/wurzel/combiner/server/gen/upload"
 )
 
 func main() {

@@ -3,7 +3,7 @@
 // organisms HTTP client CLI support package
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package client
 
@@ -11,7 +11,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	organisms "github.com/derbexuk/poieventservice/server/gen/organisms"
+	organisms "github.com/derbexuk/wurzel/combiner/server/gen/organisms"
 )
 
 // BuildPostPayload builds the payload for the organisms post endpoint from CLI

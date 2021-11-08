@@ -3,7 +3,7 @@
 // organisms HTTP server encoders and decoders
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package server
 
@@ -12,8 +12,8 @@ import (
 	"io"
 	"net/http"
 
-	organisms "github.com/derbexuk/poieventservice/server/gen/organisms"
-	organismsviews "github.com/derbexuk/poieventservice/server/gen/organisms/views"
+	organisms "github.com/derbexuk/wurzel/combiner/server/gen/organisms"
+	organismsviews "github.com/derbexuk/wurzel/combiner/server/gen/organisms/views"
 	goahttp "goa.design/goa/v3/http"
 	goa "goa.design/goa/v3/pkg"
 )

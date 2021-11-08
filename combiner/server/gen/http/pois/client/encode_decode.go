@@ -3,7 +3,7 @@
 // pois HTTP client encoders and decoders
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package client
 
@@ -14,8 +14,8 @@ import (
 	"net/http"
 	"net/url"
 
-	pois "github.com/derbexuk/poieventservice/server/gen/pois"
-	poisviews "github.com/derbexuk/poieventservice/server/gen/pois/views"
+	pois "github.com/derbexuk/wurzel/combiner/server/gen/pois"
+	poisviews "github.com/derbexuk/wurzel/combiner/server/gen/pois/views"
 	goahttp "goa.design/goa/v3/http"
 )
 

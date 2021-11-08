@@ -3,13 +3,13 @@
 // pois HTTP server types
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package server
 
 import (
-	pois "github.com/derbexuk/poieventservice/server/gen/pois"
-	poisviews "github.com/derbexuk/poieventservice/server/gen/pois/views"
+	pois "github.com/derbexuk/wurzel/combiner/server/gen/pois"
+	poisviews "github.com/derbexuk/wurzel/combiner/server/gen/pois/views"
 	goa "goa.design/goa/v3/pkg"
 )
 

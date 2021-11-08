@@ -3,14 +3,14 @@
 // events service
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package events
 
 import (
 	"context"
 
-	eventsviews "github.com/derbexuk/poieventservice/server/gen/events/views"
+	eventsviews "github.com/derbexuk/wurzel/combiner/server/gen/events/views"
 	goa "goa.design/goa/v3/pkg"
 )
 

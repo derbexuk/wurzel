@@ -3,7 +3,7 @@
 // PoiEventApi HTTP client CLI support package
 //
 // Command:
-// $ goa gen github.com/derbexuk/poieventservice/server/design
+// $ goa gen github.com/derbexuk/wurzel/combiner/server/design
 
 package cli
 
@@ -13,10 +13,10 @@ import (
 	"net/http"
 	"os"
 
-	eventsc "github.com/derbexuk/poieventservice/server/gen/http/events/client"
-	organismsc "github.com/derbexuk/poieventservice/server/gen/http/organisms/client"
-	poisc "github.com/derbexuk/poieventservice/server/gen/http/pois/client"
-	uploadc "github.com/derbexuk/poieventservice/server/gen/http/upload/client"
+	eventsc "github.com/derbexuk/wurzel/combiner/server/gen/http/events/client"
+	organismsc "github.com/derbexuk/wurzel/combiner/server/gen/http/organisms/client"
+	poisc "github.com/derbexuk/wurzel/combiner/server/gen/http/pois/client"
+	uploadc "github.com/derbexuk/wurzel/combiner/server/gen/http/upload/client"
 	goahttp "goa.design/goa/v3/http"
 	goa "goa.design/goa/v3/pkg"
 )
