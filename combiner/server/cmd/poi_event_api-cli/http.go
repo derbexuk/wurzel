@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	cli "github.com/derbexuk/poieventservice/server/gen/http/cli/poi_event_api"
+	cli "github.com/derbexuk/wurzel/combiner/server/gen/http/cli/poi_event_api"
 	goahttp "goa.design/goa/v3/http"
 	goa "goa.design/goa/v3/pkg"
 )

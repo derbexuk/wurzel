@@ -3,6 +3,7 @@ module github.com/derbexuk/wurzel/combiner
 go 1.17
 
 require (
+	github.com/derbexuk/wurzel/harvester v0.0.0-20211108122934-691599c156cf
 	github.com/onsi/gomega v1.16.0
 	go.mongodb.org/mongo-driver v1.7.2
 	goa.design/goa/v3 v3.5.2

@@ -7,6 +7,7 @@ require (
 	github.com/beevik/etree v1.1.0
 	github.com/bitly/go-simplejson v0.5.0 // indirect
 	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869 // indirect
+	github.com/derbexuk/wurzel/combiner v0.0.0-20211108122934-691599c156cf
 	github.com/onsi/gomega v1.16.0
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125
 	go.mongodb.org/mongo-driver v1.7.2
