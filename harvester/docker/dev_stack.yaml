@@ -1,23 +1,23 @@
 version: '3'
 services:
-  cspace-redis:
+  redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
-  cspace-feed-files-test:
+  harvester-files-test:
     build:
       context: ../
       dockerfile: docker/feed_files.docker
     volumes:
       - feeds-vol:/etc/skunk/feeds.d
-  cspace-feeds:
+  harvester:
     build:
       context: ../
       dockerfile: docker/scheduler.docker
     image: "derbexuk/wurzel-harvester"
     depends_on:
-      - "cspace-redis"
-      - "cspace-feed-files-test"
+      - "redis"
+      - "harvester-files-test"
     volumes:
       - feeds-vol:/etc/cspace/feeds.d
 volumes:

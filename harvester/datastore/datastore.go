@@ -31,8 +31,8 @@ const COL = "cache"
 //Will keep retrying
 func Init(params ...bool) {
 	tries := 1
-	redisAddr := "cspace-redis:6379"
-	ok := os.Getenv("CS_REDIS")
+	redisAddr := "redis:6379"
+	ok := os.Getenv("REDIS")
 	if ok != "" {
 		redisAddr = ok
 	}
