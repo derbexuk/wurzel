@@ -1,7 +1,7 @@
 # Wurzel
 
 Wurzel is an ETL system designed to combine data from different sources and, optionally, serve it back in a semi standardised way. 
-The power of this is from mashing the various source cwusingcreating only configuration files and that the UI runs standard queries returning standard objects and so can reuse code.
+The power of this is from mashing the various source creating only configuration files and that the UI runs standard queries returning standard objects and so can reuse code.
 
 Wurzel is composed of two parts the Harvester which collects the data, and the Combiner which stores and serves it. 
 
@@ -20,7 +20,7 @@ consists of a consumer and a server. The consumer waits for data to published to
 
 There are three types of objects in Wurzel: Pois, Events and Organisms objects can all reference each other so that they can be interconnected.  The different types all have standard fields but also a Properties field which can hold a hash of strings and so support any extra data needed.
 
-### Stndard Fields
+### Standard Fields
 All object types support :
 - ID
 - Title
@@ -43,5 +43,5 @@ are geographically based objects, they are a bit of a work in progress but curre
 - GeoType, a GeoJson type, currently only Point, LineString, Polygon are supported
 - GeoLoaction, a list of Geolocation objects each with a latitude and longitude attribute
 
-We probably need to settly on just GeoJson as a string and map that into the db.
+We probably need to settle on just GeoJson or WKT as a string and map that into the db.
 
