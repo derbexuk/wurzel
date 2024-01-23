@@ -143,26 +143,36 @@ func (it *FeedIterator) GetTimes(def map[interface{}]interface{}, data map[strin
 	if err != nil {
 		log.Panic(err)
 	}
+
+	//We have to specify an end but, it can be set to the start or forever
+	end, err = it.GetItVal(def["End"].(string), data)
+	if err != nil {
+		log.Panic(err)
+	}
+	return GetKwdTimes(start, end, timeFormat)
+}
+
+func GetKwdTimes(startkwd, endkwd, timeFormat string) (start string, end string) {
 	var tStart time.Time
-	if start == "now" {
+	var err error
+
+	if startkwd == "now" {
 		tStart = time.Now()
 	} else {
-		tStart, err = time.Parse(timeFormat, start)
+		tStart, err = time.Parse(timeFormat, startkwd)
 		if err != nil {
 			log.Panic(err)
 		}
 	}
 	start = tStart.Format(time.RFC3339)
 
-	//We have to specify an end but, it can be set to the start of forever
-	end, err = it.GetItVal(def["End"].(string), data)
-	if err != nil {
-		log.Panic(err)
-	}
-	if end == "start" {
+	//We have to specify an end but, it can be set to the start or forever
+	if endkwd == "start" {
 		end = tStart.Format(time.RFC3339)
+	} else if endkwd == "-1" { /* Make generic */
+		end = tStart.AddDate(0, 0, -1).Format(time.RFC3339)
 	} else {
-		tEnd, err := time.Parse(timeFormat, end)
+		tEnd, err := time.Parse(timeFormat, endkwd)
 		if err != nil {
 			log.Panic(err)
 		}
