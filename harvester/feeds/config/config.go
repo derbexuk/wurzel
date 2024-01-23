@@ -21,6 +21,7 @@ type FeedConfig struct {
 	Credentials map[string]string   `yaml:",omitempty"`
 	Source      string              `yaml:"feed source"`
 	Subs        map[string][]string `yaml:"sub feeds,omitempty"`
+	QueryParams map[string]string   `yaml:"query params,omitempty"`
 	Paths       []map[string]string
 	Params      map[string]interface{} `yaml:",omitempty"` //extra params for specific fetchers
 }
