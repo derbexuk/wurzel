@@ -7,7 +7,6 @@ import (
 	"log"
 	"net/http"
 	"reflect"
-	"strings"
 	"time"
 
 	ds "github.com/derbexuk/wurzel/harvester/datastore"
@@ -106,18 +105,8 @@ func (fx *RESTFetcher) Fetch(signals chan bool, conf config.FeedConfig, process 
 
 	//Bare feed
 	if len(conf.Subs) == 0 {
-		if len(conf.QueryParams) == 0 {
-			go fx.poll(signals, conf.Source, conf.Frequency, process, nil)
-		} else {
-			var qstring string
-			for key, val := range conf.QueryParams {
-				qstring = fmt.Sprintf("%s=%s+", key, val)
-			}
-			qstring = strings.TrimSuffix(qstring, "+")
-			url := fmt.Sprintf("%s?%s", conf.Source, qstring)
-			log.Printf("Fetching URL : %s\n", url)
-			go fx.poll(signals, url, conf.Frequency, process, nil)
-		}
+		log.Printf("Fetching URL : %s\n", conf.Source)
+		go fx.poll(signals, conf.Source, conf.Frequency, process, nil)
 	} else {
 		for key, val := range conf.Subs {
 			for _, param := range val {

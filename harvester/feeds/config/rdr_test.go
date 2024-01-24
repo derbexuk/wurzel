@@ -151,7 +151,7 @@ paths:
 }
 
 func TestDatDelta(t *testing.T) {
-	RegisterTestingT(t)
+  RegisterTestingT(t)
 
   dstr, err := DateDelta("TODAY15D")
   Expect(err.Error()).To(Equal(`strconv.Atoi: parsing "5D": invalid syntax`))
@@ -167,9 +167,9 @@ func TestDatDelta(t *testing.T) {
 }
 
 func TestExpandDates(t *testing.T) {
-	RegisterTestingT(t)
+  RegisterTestingT(t)
 
-	fc := FeedConfig{}
+  fc := FeedConfig{}
   fc.Source = "https://api.tfl.gov.uk/Road/All/Disruption?startDate=TODAY-15D&endDate=TODAY+03M/xxx"
 
   tm := time.Now()

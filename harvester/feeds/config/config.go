@@ -8,6 +8,7 @@ import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
+	"net/url"
 	"regexp"
 	"strconv"
 	"strings"
@@ -21,6 +22,7 @@ type FeedConfig struct {
 	Credentials map[string]string   `yaml:",omitempty"`
 	Source      string              `yaml:"feed source"`
 	Subs        map[string][]string `yaml:"sub feeds,omitempty"`
+	QueryTimeFormat string   `yaml:"query time format,omitempty"`
 	QueryParams map[string]string   `yaml:"query params,omitempty"`
 	Paths       []map[string]string
 	Params      map[string]interface{} `yaml:",omitempty"` //extra params for specific fetchers
@@ -99,17 +101,17 @@ func (fc *FeedConfig) ExpandDates() {
   subStrStart := 0
   for _, slice := range substrs {
     datStr1 := src[slice[0]:slice[1]]
-    delta_str, err := DateDelta(datStr1)
+    delta_str, err := DateDelta(datStr1, fc.QueryTimeFormat)
     if err != nil {
       return
     }
-    newUrl = newUrl + src[subStrStart:slice[0]] + delta_str
+    newUrl = newUrl + src[subStrStart:slice[0]] + url.QueryEscape(delta_str)
     subStrStart = slice[1]
   }
   fc.Source = newUrl + src[subStrStart:]
 }
 
-func DateDelta(deltaStr string) (string, error) {
+func DateDelta(deltaStr, tfStr string) (string, error) {
   t := time.Now()
 
   if deltaStr != "TODAY" {
@@ -137,7 +139,7 @@ func DateDelta(deltaStr string) (string, error) {
     }
   }
 
-  tStr := t.Format("2006/01/02")
+  tStr := t.Format(tfStr)
   return tStr, nil
 }
 /*
@@ -163,5 +165,15 @@ func (fc *FeedConfig) Read(config_file string) {
 	}
 	fc.Populate(config)
 	fc.ApplyCredentials()
-  fc.ExpandDates()
+	log.Println(fc)
+	if fc.Subs == nil && fc.QueryParams != nil {
+		var qstring string
+		for key, val := range fc.QueryParams {
+			qstring += fmt.Sprintf("%s=%s&", key, url.QueryEscape(val))
+		}
+		qstring = strings.TrimSuffix(qstring, "&")
+		fc.Source = fmt.Sprintf("%s?%s", fc.Source, qstring)
+	}
+	log.Println(fc.Source)
+  	fc.ExpandDates()
 }
