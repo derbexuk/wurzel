@@ -67,8 +67,11 @@ func (it *FeedIterator) New(def map[interface{}]interface{}, data map[string]int
 			log.Println(err)
 			return err
 		}
-		log.Printf("%s : %d\n", it.Iterator, it.Length)
+		log.Printf("Iterator %s : %d\n", it.Iterator, it.Length)
+	} else {
+		return fmt.Errorf("No 'iterator' in config file")
 	}
+	log.Printf("Iterator %s : %d\n", it.Iterator, it.Length)
 	return nil
 }
 
@@ -112,7 +115,8 @@ func (it *FeedIterator) GetItValRaw(src string, data map[string]interface{}) (in
 
 func (it *FeedIterator) GetItVal(src string, data map[string]interface{}) (string, error) {
 	val, err := it.GetItValRaw(src, data)
-	return val.(string), err
+	//Not that happy about this
+	return fmt.Sprintf("%v", val), err
 }
 
 func getLen(src string, data map[string]interface{}) (int, error) {

@@ -165,7 +165,6 @@ func (fc *FeedConfig) Read(config_file string) {
 	}
 	fc.Populate(config)
 	fc.ApplyCredentials()
-	log.Println(fc)
 	if fc.Subs == nil && fc.QueryParams != nil {
 		var qstring string
 		for key, val := range fc.QueryParams {
@@ -174,6 +173,5 @@ func (fc *FeedConfig) Read(config_file string) {
 		qstring = strings.TrimSuffix(qstring, "&")
 		fc.Source = fmt.Sprintf("%s?%s", fc.Source, qstring)
 	}
-	log.Println(fc.Source)
   	fc.ExpandDates()
 }
