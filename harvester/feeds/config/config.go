@@ -113,6 +113,8 @@ func (fc *FeedConfig) ExpandDates() {
 
 func DateDelta(deltaStr, tfStr string) (string, error) {
   t := time.Now()
+  year, month, day := t.Date()
+  t = time.Date(year, month, day, 0, 0, 0, 0, t.Location())
 
   if deltaStr != "TODAY" {
     num, err := strconv.Atoi(deltaStr[6:8])
