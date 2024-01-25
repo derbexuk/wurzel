@@ -146,7 +146,7 @@ func (ssp *SpreadSheetParser) parse(valAry []interface{}) map[string]string {
 				//var dataAry []map[string]interface{}
 				//dataAry = append(dataAry, dataObjs)
 
-				results[destination] = makeGenerics(gD.(map[interface{}]interface{}), dataObjs)
+				results[destination] = makeGenerics(gD.(map[interface{}]interface{}), nil, dataObjs)
 				return results
 			}
 			/*

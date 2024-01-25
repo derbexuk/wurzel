@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"reflect"
 	"time"
+	"strings"
 
 	ds "github.com/derbexuk/wurzel/harvester/datastore"
 	"github.com/derbexuk/wurzel/harvester/feeds/config"
@@ -110,8 +111,9 @@ func (fx *RESTFetcher) Fetch(signals chan bool, conf config.FeedConfig, process 
 	} else {
 		for key, val := range conf.Subs {
 			for _, param := range val {
-				url := fmt.Sprintf("%s%s=%s", conf.Source, key, param)
-				log.Printf("Fetching URL : %s\n", url)
+				sourcePath := strings.Split(conf.Source,key)
+				url := fmt.Sprintf("%s%s%s", sourcePath[0], param, sourcePath[1])
+				log.Printf("Fetching SUBS URL : %s\n", url)
 				go fx.poll(signals, url, conf.Frequency, process, map[string]string{key: param})
 			}
 		}

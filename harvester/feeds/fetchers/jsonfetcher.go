@@ -8,7 +8,9 @@ import (
 	"github.com/derbexuk/wurzel/combiner/pois"
 	//"bitbucket.org/skunk/wurzel/combiner/server/app"
 	"encoding/json"
+	"fmt"
 	"log"
+	"strings"
 )
 
 //JSON Fetcher a REST JSON feed
@@ -27,11 +29,19 @@ func (fx *JSONFetcher) Parse(contents []byte) map[string]string {
 	return fx.process([]byte(contents), nil)
 }
 
-func (fx *JSONFetcher) process(contents []byte, subsites map[string]string) map[string]string {
+func (fx *JSONFetcher) process(contents []byte, extras map[string]string) map[string]string {
 	results := make(map[string]string)
 
 	path := fx.Config.Paths[0]
 	destination := path["destination"]
+	sourcePath := strings.Split(destination, "|")
+        if len(sourcePath) == 3 {
+		ss, ok := extras[sourcePath[1]]
+		if ok {
+        		destination = fmt.Sprintf("%s%s%s", sourcePath[0], ss, sourcePath[2])
+        	}
+	}
+	log.Println("destination : ", destination)
 
 	//Is there a Generic definition in the config file
 	gD, ok := fx.Config.Params["generic"]
@@ -53,7 +63,7 @@ func (fx *JSONFetcher) process(contents []byte, subsites map[string]string) map[
 			dataAry = append(dataAry, data)
 		}
 
-		results[destination] = makeGenerics(gD.(map[interface{}]interface{}), dataAry)
+		results[destination] = makeGenerics(gD.(map[interface{}]interface{}), extras, dataAry)
 	} else { /* Return raw json */
 		results[destination] = string(contents)
 	}
@@ -61,7 +71,7 @@ func (fx *JSONFetcher) process(contents []byte, subsites map[string]string) map[
 	return results
 }
 
-func makeGenerics(genericDef map[interface{}]interface{}, dataAry []map[string]interface{}) string {
+func makeGenerics(genericDef map[interface{}]interface{}, extras map[string]string, dataAry []map[string]interface{}) string {
 
 	gResult := GenericResult{}
 	rf := References{}
@@ -87,7 +97,7 @@ func makeGenerics(genericDef map[interface{}]interface{}, dataAry []map[string]i
 			} else if entityType == "event" {
 				_, ok := genericDef["event"]
 				if ok {
-					gResult.Events = append(gResult.Events, rf.makeEvent(genericDef["event"].(map[interface{}]interface{}), dataAry[i])...)
+					gResult.Events = append(gResult.Events, rf.makeEvent(genericDef["event"].(map[interface{}]interface{}), extras, dataAry[i])...)
 				}
 			} else if entityType == "organism" {
 				_, ok := genericDef["organism"]
@@ -105,7 +115,7 @@ func makeGenerics(genericDef map[interface{}]interface{}, dataAry []map[string]i
 	return string(jstr)
 }
 
-func (rf *References) makeEvent(eventDef map[interface{}]interface{}, data map[string]interface{}) (evs []*events.Event) {
+func (rf *References) makeEvent(eventDef map[interface{}]interface{}, extras map[string]string, data map[string]interface{}) (evs []*events.Event) {
 	var err error
 
 	eventIt := FeedIterator{}
@@ -118,7 +128,7 @@ func (rf *References) makeEvent(eventDef map[interface{}]interface{}, data map[s
 
 	for {
 		event := events.Event{}
-		event.Title, err = eventIt.GetItVal(eventDef["Title"].(string), data)
+		event.Title, err = eventIt.GetTitle(eventDef["Title"].(string), extras, data)
 		if err != nil {
 			log.Panic(err)
 		}

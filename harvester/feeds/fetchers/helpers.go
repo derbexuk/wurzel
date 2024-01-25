@@ -136,6 +136,19 @@ func getLen(src string, data map[string]interface{}) (int, error) {
 	}
 }
 
+func (it *FeedIterator) GetTitle(src string, extras map[string]string, data map[string]interface{}) (string, error) {
+	sourcePath := strings.Split(src, "|")
+        if len(sourcePath) == 3 {
+		ss, ok := extras[sourcePath[1]]
+		if ok {
+        		return fmt.Sprintf("%s%s%s", sourcePath[0], ss, sourcePath[2]), nil
+        	}
+	}
+	val, err := it.GetItValRaw(src, data)
+	//Not that happy about this
+	return fmt.Sprintf("%v", val), err
+}
+
 func (it *FeedIterator) GetTimes(def map[interface{}]interface{}, data map[string]interface{}) (start string, end string) {
 	//We want to have a standard time format
 	start, err := it.GetItVal(def["Start"].(string), data)

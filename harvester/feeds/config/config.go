@@ -67,10 +67,9 @@ func (fc *FeedConfig) ApplyCredentials() {
 		return
 	}
 	sourcePath := strings.Split(fc.Source, "|")
-  if len(sourcePath) < 3 {
-    return
-  }
-
+  	if len(sourcePath) < 3 {
+    		return
+  	}
 	//Very minimal could put this in a for loop for multiple creds
 	fc.Source = fmt.Sprintf("%s%s%s", sourcePath[0], fc.Credentials[sourcePath[1]], sourcePath[2])
 }
@@ -167,7 +166,7 @@ func (fc *FeedConfig) Read(config_file string) {
 	}
 	fc.Populate(config)
 	fc.ApplyCredentials()
-	if fc.Subs == nil && fc.QueryParams != nil {
+	if fc.QueryParams != nil {
 		var qstring string
 		for key, val := range fc.QueryParams {
 			qstring += fmt.Sprintf("%s=%s&", key, url.QueryEscape(val))
